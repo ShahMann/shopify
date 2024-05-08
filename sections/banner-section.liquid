@@ -1,0 +1,38 @@
+{% render 'banner-images' %}
+
+
+{% schema %}
+  {
+    "name": "Banner Section",
+    "settings": [],
+    "blocks": [
+    {
+      "type": "slide",
+      "name": "Custom Image slider",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slider Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Product Link"
+        },
+        {
+          "type": "range",
+          "id": "image_overlay_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "unit": "%",
+          "label": "Image Light",
+          "default": 0
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
