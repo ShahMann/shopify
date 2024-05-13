@@ -1,7 +1,13 @@
-<h1>Hello From Footer</h1>
+<p>{{ section.settings.copyright }}</p>
 {% schema %}
   {
     "name": "Section name",
-    "settings": []
+    "settings": [
+      {
+        "id": "copyright",
+        "label": "Copyright Text",
+        "type": "text"
+      }
+    ]
   }
 {% endschema %}
