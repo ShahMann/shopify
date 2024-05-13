@@ -11,8 +11,26 @@
               </li>
             {% endfor %}
           </div>
+          {% elsif block.type == 'newsletter' %}
+          <div class="footer-column footer-column--news">
+            <h2>{{ block.settings.heading }}</h2>
+            {{ block.settings.text }}
+
+            {% form 'customer', id: 'footer-newsletter' %}
+              {% if form.posted_successfully? %}
+                <p class="footer-column-news-message">You've been subscribed!</p>
+              {% endif %}
+
+              {% if form.errors %}
+                <p class="footer-column-news-message">{{ form.errors.messages.email }}</p>
+              {% endif %}
+
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input name="contact[email]" type="email" placeholder="Email address">
+              <button type="submit">Subscribe</button>
+            {% endform %}
+          </div>
           {% elsif block.type == 'text' %}
-          Hello From text
           <div class="footer-column">
             <h2>{{ block.settings.heading }}</h2>
             {{ block.settings.text }}
