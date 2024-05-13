@@ -47,6 +47,7 @@ a {
 
     .footer-column--text {
         width: 100%;
+        justify-content: space-between;
     }
 }
 
