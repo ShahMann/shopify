@@ -53,10 +53,12 @@ a {
 
 @media (min-width:1040px) {
     .footer-column--text{
+        justify-content: space-between;
         width: auto;
     }
     .footer-column--text,
     .footer-column--news {
+        justify-content: space-between;
         max-width: 320px;
     }
 }
