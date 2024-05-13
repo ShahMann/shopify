@@ -4,6 +4,17 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "navigation_qFRNdf": {
+          "type": "navigation",
+          "settings": {
+            "linklist": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "navigation_qFRNdf"
+      ],
       "settings": {
         "copyright": "&copy; 2024 Copyright"
       }
