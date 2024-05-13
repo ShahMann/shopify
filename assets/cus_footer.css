@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f6f6f6;
+    color: #111;
+    font-family: sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.footer {
+    background-color: #fff;
+    padding: 60px 0;
+    font-size: 14px;
+}
+
+.width {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+@media (min-width:760px) {
+    .footer-top {
+        flex-direction: row;
+        justify-content: space-between;
+        row-gap: 60px;
+        column-gap: 40px;
+    }
+
+    .footer-column--text {
+        width: 100%;
+    }
+}
+
+@media (min-width:1040px) {
+    .footer-column--text{
+        width: auto;
+    }
+    .footer-column--text,
+    .footer-column--news {
+        max-width: 320px;
+    }
+}
+
+.footer-column h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.footer-column p,
+.footer-column a {
+    color: #666;
+}
+
+.footer-column li+li {
+    margin-top: 10px;
+}
+
+.footer-column a {
+    transition: 0.2s color;
+}
+
+.footer-column a:hover {
+    color: #111;
+}
+
+.footer-column.footer-column--news form {
+    margin: 20px;
+}
+
+.footer-column.footer-column--news input,
+.footer-column.footer-column--news button {
+    appearance: none;
+    outline: none;
+    line-height: 50px;
+}
+
+.footer-column.footer-column--news input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 0 16px;
+}
+
+.footer-column.footer-column--news button {
+    display: inline-block;
+    color: #fff;
+    background: #111;
+    border: 1px solid #111;
+    color: #fff;
+    padding: 0 32px;
+    margin-top: 10px;
+    transition: 0.2s color, 0.2s background-color, 0.2s border-coor;
+}
+
+.footer-column.footer-column--news button:hover {
+    background-color: #323232;
+    border-color: #323232;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-copyright {
+    color: #666;
+}
+
+.footer-card{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-column-news-message{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
