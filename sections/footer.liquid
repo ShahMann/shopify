@@ -55,28 +55,60 @@
 </footer>
 
 {% schema %}
-  {
-    "name": "Footer",
-    "settings": [
-      {
-        "id": "copyright",
-        "label": "Copyright Text",
-        "type": "text"
-      }
-    ],
-    "max_blocks": 5,
-    "blocks": [
-      {
-        "name": "Navigation Column",
-        "type": "navigation",
-        "settings": [
-          {
-            "type": "link_list",
-            "id": "linklist",
-            "label": "Navigation Menu"
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "id": "copyright",
+      "label": "Copyright text",
+      "type": "text"
+    }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading text"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Body text"
+        }
+      ]
+    },
+    {
+      "name": "Text",
+      "type": "text",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading text"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Body text"
+        }
+      ]
+    },
+    {
+      "name": "Navigation column",
+      "type": "navigation",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "linklist",
+          "label": "Navigation menu"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
