@@ -155,13 +155,13 @@ a {
   cursor: pointer;
 }
 
-.accordion-toggle::before {
+.accordion-toggle::after {
   content: '\25B6'; /* Unicode chevron right icon */
   float: right;
   margin-left: 5px;
 }
 
-.accordion-toggle.open::before {
+.accordion-toggle.open::after {
   content: '\25BC'; /* Unicode chevron down icon */
 }
 
