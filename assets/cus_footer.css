@@ -144,3 +144,31 @@ a {
     font-size: 12px;
     margin-bottom: 10px;
 }
+
+/* Add this CSS for the accordion effect */
+.accordion-content {
+  display: none;
+  padding-left: 20px; /* Adjust as needed */
+}
+
+.accordion-toggle {
+  cursor: pointer;
+}
+
+.accordion-toggle::after {
+  content: '\25B6'; /* Unicode chevron right icon */
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion-toggle.open::after {
+  content: '\25BC'; /* Unicode chevron down icon */
+}
+
+.navigation-links {
+  padding-left: 0;
+}
+
+.footer-column--nav {
+  margin-bottom: 20px; /* Adjust as needed */
+}
