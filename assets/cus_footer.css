@@ -37,29 +37,18 @@ a {
     gap: 40px;
 }
 
-@media (min-width:760px) {
+@media (min-width:760px){
     .footer-top {
         flex-direction: row;
         justify-content: space-between;
         row-gap: 60px;
         column-gap: 40px;
     }
-
-    .footer-column--text {
-        width: 100%;
-        justify-content: space-between;
-    }
 }
 
 @media (min-width:1040px) {
-    .footer-column--text{
-        justify-content: space-between;
+    .footer-column--text {
         width: auto;
-    }
-    .footer-column--text,
-    .footer-column--news {
-        justify-content: space-between;
-        max-width: 320px;
     }
 }
 
@@ -114,7 +103,7 @@ a {
     color: #fff;
     padding: 0 32px;
     margin-top: 10px;
-    transition: 0.2s color, 0.2s background-color, 0.2s border-coor;
+    transition: 0.2s color, 0.2s background-color, 0.2s border-color;
 }
 
 .footer-column.footer-column--news button:hover {
@@ -134,41 +123,46 @@ a {
     color: #666;
 }
 
-.footer-card{
+.footer-card {
     display: inline-flex;
     align-items: center;
     gap: 10px;
 }
 
-.footer-column-news-message{
+.footer-column-news-message {
     font-size: 12px;
     margin-bottom: 10px;
 }
 
 /* Add this CSS for the accordion effect */
-.accordion-content {
-  display: none;
-  padding-left: 20px; /* Adjust as needed */
-}
+@media (max-width: 759px) {
+  .accordion-content {
+    display: none;
+    padding-left: 20px;
+    /* Adjust as needed */
+  }
 
-.accordion-toggle {
-  cursor: pointer;
-}
+  .accordion-toggle {
+    cursor: pointer;
+  }
 
-.accordion-toggle::before {
-  content: '\25B6'; /* Unicode chevron right icon */
-  float: right;
-  margin-left: 5px;
-}
+  .accordion-toggle::before {
+    content: '\25B6';
+    /* Unicode chevron right icon */
+    float: right;
+    margin-left: 5px;
+  }
 
-.accordion-toggle.open::before {
-  content: '\25BC'; /* Unicode chevron down icon */
-}
+  .accordion-toggle.open::before {
+    content: '\25BC';
+  }
 
-.navigation-links {
-  padding-left: 0;
-}
+  .navigation-links {
+    padding-left: 0;
+  }
 
-.footer-column--nav {
-  margin-bottom: 20px; /* Adjust as needed */
+  .footer-column--nav {
+    margin-bottom: 20px;
+    /* Adjust as needed */
+  }
 }
