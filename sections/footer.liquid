@@ -1,6 +1,7 @@
 {{ 'cus_footer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cus_footer.js' | asset_url }}" defer="defer"></script>
-Hello {{ block.settings.text }}
+{% assign arr = '1,2,3,4' | split: ',' %}
+Hello {{ arr }}
 
 <footer class="footer">
   <div class="width">
