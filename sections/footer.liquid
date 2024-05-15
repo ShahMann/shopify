@@ -11,13 +11,13 @@
                             {% if block.type =='navigation' %}
                               <div>
                                 <h2 class="accordion">{{ block.settings.linklist.title }} </h2>
+                                <ul class="panel">
                                 {% for link in block.settings.linklist.links %}
-                                  <ul class="panel">
                                     <li>
                                       <a href = "{{ link.url }}">{{ link.title }}</a>
                                     </li>
-                                  </ul>
                                 {% endfor %}
+                                  </ul>
                               </div>
                               {% elsif block.type == 'News-letter' %}
                                <div class ="footer-column-newsletter">
