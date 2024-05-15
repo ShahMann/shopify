@@ -1,170 +1,111 @@
-<div>
+{{ 'cus_footer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cus_footer.js' | asset_url }}" defer="defer"></script>
+
 <footer class="footer">
   <div class="width">
-    <div class ="footer-top">
-                <div>
-                  <h1>{{ section.settings.text_1 }}</h1>
-                  <h3>{{ section.settings.text_2}}</h3>
-
-
-                          {% for block in section.blocks %}
-                            {% if block.type =='navigation' %}
-                              <div>
-                                <h2 class="accordion">{{ block.settings.linklist.title }} </h2>
-                                <ul class="panel">
-                                {% for link in block.settings.linklist.links %}
-                                    <li>
-                                      <a href = "{{ link.url }}">{{ link.title }}</a>
-                                    </li>
-                                {% endfor %}
-                                  </ul>
-                              </div>
-                              {% elsif block.type == 'News-letter' %}
-                               <div class ="footer-column-newsletter">
-                                <h2>{{ block.settings.heading_n }} </h2>
-                                    <p>{{ block.settings.text-n }}</p>
-                                 <form>
-                                   <input type= "email" placeholder = "Email address">
-                                   <button type="submit"> Subcribe</button>
-                                 </form>
-                              </div>
-                              {% elsif block.type == 'text'%}
-                               <div class ="footer-column-text">
-                                <h2>{{ block.settings.heading }} </h2>
-                                    <p>{{ block.settings.text }}</p>
-                                 
-                              </div>
-                            {% endif %}
-                          {% endfor %}
-                </div>
-    </div>
-    <div class ="footer-bottom" >
-         {{ section.settings.copyright }}
-              {%-liquid assign has_social_icons = true
-                if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
-                  assign has_social_icons = false
-                endif -%}
-               <div>
-        
-            {%- if section.settings.payment_enable -%}
-               
-                  <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-                  <ul class="list list-payment" role="list">
-                    {%- for type in shop.enabled_payment_types -%}
-                      <li class="list-payment__item">
-                        {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-               
-              {%- endif -%}
-      </div>
-          <div>
-            {%- if section.settings.show_social and has_social_icons -%}
-                {%- render 'social-icons', class: 'footer__list-social' -%}
-            {%- endif -%}
+    <div class="footer-top">
+      {% for block in section.blocks %}
+        {% if block.type == 'navigation' %}
+          <div class="footer-column footer-column--nav">
+            <h2 class="accordion-toggle">{{ block.settings.linklist.title }}</h2>
+            <div class="accordion-content">
+              <ul class="navigation-links">
+                {% for link in block.settings.linklist.links %}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           </div>
+        {% elsif block.type == 'newsletter' %}
+          <div class="footer-column footer-column--news">
+            <h2>{{ block.settings.heading }}</h2>
+            {{ block.settings.text }}
+            {% form 'customer', id: 'footer-newsletter' %}
+              {% if form.posted_successfully? %}
+                <p class="footer-column-news-message">You've been subscribed!</p>
+              {% endif %}
+              {% if form.errors %}
+                <p class="footer-column-news-message">{{ form.errors.messages.email }}</p>
+              {% endif %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input name="contact[email]" type="email" placeholder="Email address">
+              <button type="submit">Subscribe</button>
+            {% endform %}
+          </div>
+        {% elsif block.type == 'text' %}
+          <div class="footer-column footer-column--text">
+            <h2>{{ block.settings.heading }}</h2>
+            {{ block.settings.text }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">{{ section.settings.copyright }}</p>
+      <ul class="footer-cards">
+        <li>{% render 'icon-visa' %}</li>
+      </ul>
     </div>
   </div>
 </footer>
 
-</div>
 {% schema %}
-  {
-    "name": "custom footer",
-    "settings": [
-      {
-        "type": "text",
-        "id": "text_1",
-        "label": "Heading"
-      },
-      {
-        "type": "text",
-        "id": "text_2",
-        "label": "Sub_heading"
-      },
-      {
-      "type": "checkbox",
-      "id": "show_social",
-      "default": true,
-      "label": "Social Icons"
-      },
+{
+  "name": "Footer",
+  "settings": [
     {
-      "type": "checkbox",
-      "id": "payment_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.payment_enable.label"
-    },
-      {
-      "type": "text",
       "id": "copyright",
-      "label": "copyright"
+      "label": "Copyright text",
+      "type": "text"
     }
-
-    ],
-    "max_blocks": 5,
-    "blocks": [
-      {
-        "name":"Newsletter",
-        "type": "News-letter",
-        "settings": [
-          {
-            "id":"heading_n",
-            "type": "text",
-            "label": "Heading text"
-          },
-          {
-            "id":"text-n",
-            "type": "richtext",
-            "label": "Bodytext"
-          }
-          
-        ]
-      },
-      {
-        "name": "Text",
-        "type": "text",
-        "settings": [
-          {
-            "id":"heading",
-            "type": "text",
-            "label": "Heading text"
-          },
-          {
-            "id":"text",
-            "type": "richtext",
-            "label": "Bodytext"
-          }
-        ]
-      },
-      {
-        "name": "navgation column",
-        "type": "navigation",
-        "settings": [
-          {
-            "type": "link_list",
-            "id": "linklist",
-            "label": "navigation menu"
-          }
-        ]
-      }
-    ]
-  }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading text"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Body text"
+        }
+      ]
+    },
+    {
+      "name": "Text",
+      "type": "text",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading text"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Body text"
+        }
+      ]
+    },
+    {
+      "name": "Navigation column",
+      "type": "navigation",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "linklist",
+          "label": "Navigation menu"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
-
- <script>
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-  
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  }
-</script>
