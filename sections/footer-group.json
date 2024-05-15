@@ -24,6 +24,12 @@
             "linklist": "footer"
           }
         },
+        "navigation_aG9qpd": {
+          "type": "navigation",
+          "settings": {
+            "linklist": "products"
+          }
+        },
         "text_QqGe7c": {
           "type": "text",
           "settings": {
@@ -36,6 +42,7 @@
         "newsletter_BzdMGB",
         "navigation_8MJQqY",
         "navigation_qFRNdf",
+        "navigation_aG9qpd",
         "text_QqGe7c"
       ],
       "settings": {
