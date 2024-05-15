@@ -134,7 +134,7 @@ a {
     margin-bottom: 10px;
 }
 
-@media (max-width: 759px) {
+@media (max-width: 760px) {
   .accordion-content {
     display: none;
     padding-left: 20px;
