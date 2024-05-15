@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
             otherAccordion.classList.remove('open');
             otherAccordion.nextElementSibling.style.display = 'none';
           }
-        });
-  
+        });  
         this.classList.toggle('open');
         var content = this.nextElementSibling;
         if (content.style.display === 'block') {
