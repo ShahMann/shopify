@@ -37,7 +37,7 @@ a {
     gap: 40px;
 }
 
-@media (min-width:760px){
+@media (min-width: 760px) {
     .footer-top {
         flex-direction: row;
         justify-content: space-between;
@@ -46,7 +46,7 @@ a {
     }
 }
 
-@media (min-width:1040px) {
+@media (min-width: 1040px) {
     .footer-column--text {
         width: auto;
     }
@@ -65,7 +65,7 @@ a {
     color: #666;
 }
 
-.footer-column li+li {
+.footer-column li + li {
     margin-top: 10px;
 }
 
@@ -123,7 +123,7 @@ a {
     color: #666;
 }
 
-.footer-card {
+.footer-cards {
     display: inline-flex;
     align-items: center;
     gap: 10px;
