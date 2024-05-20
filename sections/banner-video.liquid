@@ -1,5 +1,3 @@
-<!-- sections/banner-video.liquid -->
-
 <section class="banner-video-section">
     <div class="video-container">
       {% if section.settings.video_type == 'youtube' %}
@@ -37,4 +35,35 @@
       height: 100%;
     }
   </style>
-  
+
+{% schema %}
+{
+  "name": "Banner Video",
+  "settings": [
+    {
+      "type": "select",
+      "id": "video_type",
+      "label": "Video Source",
+      "options": [
+        { "value": "youtube", "label": "YouTube" },
+        { "value": "vimeo", "label": "Vimeo" },
+        { "value": "mp4", "label": "MP4" }
+      ],
+      "default": "youtube"
+    },
+    {
+      "type": "text",
+      "id": "video_id",
+      "label": "YouTube or Vimeo Video ID",
+      "default": "https://www.youtube.com/watch?v=zSBA_apjCf4"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "MP4 Video URL"
+    }
+  ]
+}
+{% endschema %}
+
+
