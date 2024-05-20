@@ -158,7 +158,7 @@
             "settings": {
               "link": "",
               "image_overlay_opacity": 100,
-              "video_src": "https:\/\/www.youtube.com\/embed\/jwyv8hnhPh0?si=7zudhoRtol6fPz5l\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen",
+              "video_src": "",
               "direct_url": "https:\/\/www.youtube.com\/watch?v=jwyv8hnhPh0"
             }
           }
