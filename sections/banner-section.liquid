@@ -1,11 +1,10 @@
 {% render 'banner-images' %}
 
-
 {% schema %}
-  {
-    "name": "Banner Section",
-    "settings": [],
-    "blocks": [
+{
+  "name": "Banner Section",
+  "settings": [],
+  "blocks": [
     {
       "type": "slide",
       "name": "Custom Image slider",
@@ -30,9 +29,15 @@
           "unit": "%",
           "label": "Image Light",
           "default": 0
+        },
+        {
+          "type": "text",
+          "id": "video_src",
+          "label": "Video Source",
+          "info": "Enter the iframe source for the video"
         }
       ]
     }
   ]
-  }
+}
 {% endschema %}
