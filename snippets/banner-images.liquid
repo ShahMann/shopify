@@ -17,7 +17,7 @@
   {% if block.settings.image!= blank  %}
     <div class="banner">
       <a href="{{ block.settings.link }}">
-        <img src="{{ block.settings.image | img_url: width: 300, height: 200 }}" style="opacity: {{ block.settings.image_overlay_opacity }}%;">
+        <img src="{{ block.settings.image | image_url: width: 100, height: 100 }}" style="opacity: {{ block.settings.image_overlay_opacity }}%;">
         {% comment %} <img src="{{ block.settings.image | img_url: '1500X1500' }}" style="opacity: {{ block.settings.image_overlay_opacity }}%;"> {% endcomment %}
       </a>
     </div>
