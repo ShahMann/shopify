@@ -1,5 +1,6 @@
 <section class="banner-video-section">
     <div class="video-container">
+        {}
       {% if section.settings.video_type == 'youtube' %}
         <iframe src="https://www.youtube.com/embed/{{ section.settings.video_id }}" frameborder="0" allowfullscreen></iframe>
       {% elsif section.settings.video_type == 'vimeo' %}
