@@ -1,9 +1,14 @@
 {%- assign blocks = section.blocks -%}
 {%- for block in blocks -%}
-  {% if block.settings.image != blank  %}
+  {% if block.settings.image!= blank %}
     <div class="banner">
       <a href="{{ block.settings.link }}">
-        <img src="{{ block.settings.image | img_url: '1500X1500' }}" style="opacity: {{ block.settings.image_overlay_opacity }}%;">
+        <img 
+          src="{{ block.settings.image | img_url: '1500x1500' }}" 
+          style="opacity: {{ block.settings.image_overlay_opacity }}%;" 
+          width="auto" 
+          height="auto"
+        >
       </a>
     </div>
   {% endif %}

@@ -1,0 +1,25 @@
+{% render 'banner-video' %}
+{% schema %}
+{
+  "name": "Banner Video",
+  "settings": [
+    {
+      "type": "select",
+      "id": "video_type",
+      "label": "Video Source",
+      "options": [
+        { "value": "youtube", "label": "YouTube" },
+        { "value": "vimeo", "label": "Vimeo" }
+      ],
+      "default": "youtube"
+    },
+    {
+      "type": "text",
+      "id": "video_id",
+      "label": "YouTube or Vimeo Video ID"
+    }
+  ]
+}
+{% endschema %}
+
+
