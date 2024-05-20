@@ -1,4 +1,5 @@
 {% if section.settings.video_id != blank %}
+<section class="banner-video-section">
   <div class="video-container">
       {% if section.settings.video_type == 'youtube' %}
         <iframe
@@ -14,6 +15,7 @@
         ></iframe>
       {% endif %}
     </div>
+</section>
 {% endif %}
 
 <style>
