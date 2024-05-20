@@ -17,6 +17,7 @@
     </div>
   {% elsif block.settings.direct_url != blank %}
     <div class="banner">
+      {{ block.settings.direct_url }}
       <a href="{{ block.settings.direct_url }}" target="_blank">Visit Link</a>
     </div>
   {% endif %}
