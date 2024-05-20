@@ -155,10 +155,16 @@
           "slide_j8qxan"
         ],
         "custom_css": [
-          ".banner-section {width: 100%; max-width: 100vw;}",
-          ".slide-container {width: 100%; max-width: 100vw;}"
+
         ],
         "settings": {
+        }
+      },
+      "banner-video": {
+        "type": "banner-video",
+        "settings": {
+          "video_type": "youtube",
+          "video_id": "ajdRvxDWH4w?si=594Vf6CQe5A1KD_Z"
         }
       }
     },
