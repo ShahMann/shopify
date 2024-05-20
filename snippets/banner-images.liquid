@@ -1,20 +1,15 @@
 {%- assign blocks = section.blocks -%}
 {%- for block in blocks -%}
-  {% if block.settings.image != blank %}
+  {% if block.settings.image!= blank %}
     <div class="banner">
       <a href="{{ block.settings.link }}">
         <img 
           src="{{ block.settings.image | img_url: '1500x1500' }}" 
           style="opacity: {{ block.settings.image_overlay_opacity }}%;" 
-          width="1832" 
-          height="400"
+          width="auto" 
+          height="auto"
         >
       </a>
-    </div>
-  {% elsif block.settings.video_src != blank %}
-    <div class="banner">
-      <iframe src="{{ block.settings.video_src | escape }}" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
-      
     </div>
   {% endif %}
 {%- endfor -%}
