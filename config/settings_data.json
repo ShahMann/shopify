@@ -138,8 +138,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/banner1.jpg",
               "link": "shopify:\/\/products\/the-complete-snowboard",
-              "image_overlay_opacity": 100,
-              "video_src": ""
+              "image_overlay_opacity": 100
             }
           },
           "slide_j8qxan": {
@@ -147,28 +146,26 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/banner2.jpg",
               "link": "shopify:\/\/collections\/all",
-              "image_overlay_opacity": 100,
-              "video_src": ""
-            }
-          },
-          "slide_j9KLdy": {
-            "type": "slide",
-            "settings": {
-              "link": "",
-              "image_overlay_opacity": 100,
-              "video_src": "zSBA_apjCf4?si=nqLilMKESWw0dTcC"
+              "image_overlay_opacity": 100
             }
           }
         },
         "block_order": [
           "slide_9ReADp",
-          "slide_j8qxan",
-          "slide_j9KLdy"
+          "slide_j8qxan"
         ],
         "custom_css": [
 
         ],
         "settings": {
+        }
+      },
+      "banner-video": {
+        "type": "banner-video",
+        "settings": {
+          "video_type": "youtube",
+          "video_id": "https:\/\/www.youtube.com\/watch?v=zSBA_apjCf4",
+          "video_url": ""
         }
       }
     },
