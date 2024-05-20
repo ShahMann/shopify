@@ -1,0 +1,32 @@
+<section class="banner-video-section">
+    <div class="video-container">
+      {% if section.settings.video_type == 'youtube' %}
+        <iframe width="1832" height="400" src="https://www.youtube.com/embed/{{ section.settings.video_id }}" frameborder="0" allowfullscreen></iframe>
+      {% elsif section.settings.video_type == 'vimeo' %}
+        <iframe width="100%" height="100%" src="https://player.vimeo.com/video/{{ section.settings.video_id }}" frameborder="0" allowfullscreen></iframe>
+      {% endif %}
+    </div>
+  </section>
+  
+  <style>
+    .banner-video-section {
+      position: relative;
+      padding-top: 56.25%; 
+      height: 0;
+    }
+    .banner-video-section .video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .banner-video-section iframe,
+    .banner-video-section video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1832;
+      height: 400;
+    }
+  </style>
