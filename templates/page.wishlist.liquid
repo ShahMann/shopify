@@ -1,0 +1,38 @@
+<h1>Your Wishlist</h1>
+<div id="wishlist-container"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const wishlistContainer = document.getElementById('wishlist-container');
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+    } else {
+        wishlist.forEach(productId => {
+            fetch(`/products/${productId}.js`)
+                .then(response => response.json())
+                .then(product => {
+                    const productHtml = `
+                        <div class="wishlist-item">
+                            <a href="/products/${product.handle}">
+                                <img src="${product.featured_image}" alt="${product.title}">
+                                <p>${product.title}</p>
+                            </a>
+                        </div>
+                    `;
+                    wishlistContainer.innerHTML += productHtml;
+                });
+        });
+    }
+});
+</script>
+
+<style>
+.wishlist-item {
+    margin-bottom: 20px;
+}
+.wishlist-item img {
+    max-width: 100px;
+}
+</style>
