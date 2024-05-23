@@ -7,6 +7,8 @@
       <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
       <span class="wishlist-heart" data-product-handle="{{ product.handle }}">
       &#x2764;</span>
+  <div id="wishlist-notification" style="display: none; position: fixed; top: 20px; right: 20px; background: #444; color: white; padding: 10px; border-radius: 5px; z-index: 1000;"></div>
+
 
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
