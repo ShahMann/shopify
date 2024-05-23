@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <p>${product.title}</p>
                             </a>
                             <button class="remove-from-wishlist" data-product-handle="${product.handle}">&#x2716;</button> <!-- Remove button -->
-                            <span class="wishlist-message">Product is added in wishlist</span>
                         </div>
                     `;
                     wishlistContainer.innerHTML += productHtml;
@@ -99,17 +98,5 @@ document.addEventListener('DOMContentLoaded', function() {
     padding: 10px;
     border-radius: 5px;
     z-index: 1000;
-}
-.wishlist-container {
-    display: inline-flex;
-    align-items: center;
-}
-.wishlist-message {
-    margin-left: 10px;
-    font-size: 14px;
-    color: #888;
-}
-.wishlist-heart.added + .wishlist-message {
-    color: red;
 }
 </style>
