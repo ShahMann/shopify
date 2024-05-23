@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         // wishlistContainer.innerHTML = '<p>Loading your wishlist...</p>';
         wishlist.forEach(productHandle => {
-            console.log(`Fetching product data for handle: ${productHandle}`); // Debugging line
+            console.log(`Fetching product data for handle: ${productHandle}`);
             fetch(`/products/${productHandle}.js`)
                 .then(response => {
                     if (!response.ok) {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response.json();
                 })
                 .then(product => {
-                    console.log('Product data:', product); // Debugging line
+                    console.log('Product data:', product);
                     const productHtml = `
                         <div class="wishlist-item">
                             <a href="/products/${product.handle}">
