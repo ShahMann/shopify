@@ -46,3 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 });
+-> Study Javascript Concept
+-> Self Study in checkout-ui extension app
+-> Completed Wishlist  task
