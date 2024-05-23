@@ -4,7 +4,9 @@
   data-section="{{ section.id }}"
 >
       <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
-      <button class="add-to-wishlist" data-product-handle="{{ product.handle }}">Add to Wishlist</button>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <i class="fas fa-heart add-to-wishlist" data-product-handle="{{ product.handle }}"></i>
+
 
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
