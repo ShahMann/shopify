@@ -1,21 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
+    const wishlistHearts = document.querySelectorAll('.wishlist-heart');
 
-    wishlistButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productHandle = this.getAttribute('data-product-handle');
-            addToWishlist(productHandle);
+    wishlistHearts.forEach(heart => {
+        const productHandle = heart.getAttribute('data-product-handle');
+        if (isInWishlist(productHandle)) {
+            heart.classList.add('added');
+        }
+
+        heart.addEventListener('click', function() {
+            toggleWishlist(productHandle, heart);
         });
     });
 
-    function addToWishlist(productHandle) {
+    function isInWishlist(productHandle) {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        return wishlist.includes(productHandle);
+    }
+
+    function toggleWishlist(productHandle, heartElement) {
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        if (!wishlist.includes(productHandle)) {
-            wishlist.push(productHandle);
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-            alert('Product added to wishlist');
+        if (wishlist.includes(productHandle)) {
+            wishlist = wishlist.filter(handle => handle !== productHandle);
+            heartElement.classList.remove('added');
+            alert('Product removed from wishlist');
         } else {
-            alert('Product is already in your wishlist');
+            wishlist.push(productHandle);
+            heartElement.classList.add('added');
+            alert('Product added to wishlist');
         }
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
 });
