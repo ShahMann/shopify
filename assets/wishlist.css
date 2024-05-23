@@ -1,0 +1,10 @@
+.wishlist-heart {
+    cursor: pointer;
+    font-size: 24px; /* Adjust size as needed */
+    color: #ccc; /* Default color */
+    transition: color 0.3s;
+}
+
+.wishlist-heart.added {
+    color: red; /* Color when added to wishlist */
+}
