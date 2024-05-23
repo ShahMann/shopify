@@ -9,19 +9,31 @@ document.addEventListener('DOMContentLoaded', function() {
     if (wishlist.length === 0) {
         wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
     } else {
-        wishlist.forEach(productId => {
-            fetch(`/products/${productId}.js`)
-                .then(response => response.json())
+        wishlistContainer.innerHTML = '<p>Loading your wishlist...</p>'; // Indicate loading
+        wishlist.forEach(productHandle => {
+            console.log(`Fetching product data for handle: ${productHandle}`); // Debugging line
+            fetch(`/products/${productHandle}.js`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok for product handle: ${productHandle}`);
+                    }
+                    return response.json();
+                })
                 .then(product => {
+                    console.log('Product data:', product); // Debugging line
                     const productHtml = `
                         <div class="wishlist-item">
                             <a href="/products/${product.handle}">
-                                <img src="${product.featured_image}" alt="${product.title}">
+                                <img src="${product.images[0]}" alt="${product.title}">
                                 <p>${product.title}</p>
                             </a>
                         </div>
                     `;
                     wishlistContainer.innerHTML += productHtml;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    wishlistContainer.innerHTML += `<p>Failed to load product with handle: ${productHandle}</p>`;
                 });
         });
     }
