@@ -391,12 +391,10 @@
                     {%- endif -%}
                   </div>
                     <!-- wishlist Icon  -->
-                    <div>
                     <span class="wishlist-container" data-product-handle="{{ product.handle }}">
                       <span class="wishlist-heart">&#x2764;</span>
                       <span class="wishlist-message">Add in wishlist</span>
                     </span>
-                    </div>
                   {%- if product.quantity_price_breaks_configured? -%}
                     <volume-pricing class="parent-display" id="Volume-{{ section.id }}">
                       {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
