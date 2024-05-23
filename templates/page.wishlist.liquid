@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (wishlist.length === 0) {
         wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
     } else {
-        wishlistContainer.innerHTML = ''; // Clear any existing content
+        wishlistContainer.innerHTML = '';
         wishlist.forEach(productHandle => {
-            console.log(`Fetching product data for handle: ${productHandle}`); // Debugging line
+            console.log(`Fetching product data for handle: ${productHandle}`); 
             fetch(`/products/${productHandle}.js`)
                 .then(response => {
                     if (!response.ok) {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response.json();
                 })
                 .then(product => {
-                    console.log('Product data:', product); // Debugging line
+                    console.log('Product data:', product); 
                     const productHtml = `
                         <div class="wishlist-item" data-product-handle="${product.handle}">
                             <a href="/products/${product.handle}">
