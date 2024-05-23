@@ -281,6 +281,7 @@
                         {% render 'icon-plus' %}
                       </button>
                     </quantity-input>
+                    Shah
                     {%- liquid
                       assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
                       assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
