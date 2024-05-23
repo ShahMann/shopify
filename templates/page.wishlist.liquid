@@ -1,9 +1,11 @@
 <h1>Your Wishlist</h1>
 <div id="wishlist-container"></div>
+<div id="wishlist-notification" style="display: none; position: fixed; top: 20px; right: 20px; background: #444; color: white; padding: 10px; border-radius: 5px; z-index: 1000;"></div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const wishlistContainer = document.getElementById('wishlist-container');
+    const notification = document.getElementById('wishlist-notification');
     const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
     if (wishlist.length === 0) {
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <img src="${product.images[0]}" alt="${product.title}">
                                 <p>${product.title}</p>
                             </a>
-                            <button class="remove-from-wishlist" data-product-handle="${product.handle}">&#x2716; Remove From Wishlist</button>
+                            <button class="remove-from-wishlist" data-product-handle="${product.handle}">&#x2716;</button> <!-- Remove button -->
                         </div>
                     `;
                     wishlistContainer.innerHTML += productHtml;
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Event delegation for removing items from the wishlist
     wishlistContainer.addEventListener('click', function(event) {
         if (event.target.classList.contains('remove-from-wishlist')) {
             const productHandle = event.target.getAttribute('data-product-handle');
@@ -54,6 +57,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (wishlist.length === 0) {
             wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
         }
+        showNotification('Product removed from wishlist');
+    }
+
+    function showNotification(message) {
+        notification.textContent = message;
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
     }
 });
 </script>
@@ -75,5 +87,16 @@ document.addEventListener('DOMContentLoaded', function() {
     cursor: pointer;
     font-size: 20px;
     color: red;
+}
+#wishlist-notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #444;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
 }
 </style>
