@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     wishlistButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const productId = this.getAttribute('data-product-id');
-            addToWishlist(productId);
+            const productHandle = this.getAttribute('data-product-handle');
+            addToWishlist(productHandle);
         });
     });
 
-    function addToWishlist(productId) {
+    function addToWishlist(productHandle) {
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        if (!wishlist.includes(productId)) {
-            wishlist.push(productId);
+        if (!wishlist.includes(productHandle)) {
+            wishlist.push(productHandle);
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
             alert('Product added to wishlist');
         } else {
