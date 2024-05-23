@@ -5,8 +5,6 @@
 >
   {{ 'wishlist.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
-      <span class="wishlist-heart" data-product-handle="{{ product.handle }}">
-      &#x2764;</span>
   <div id="wishlist-notification" style="display: none; position: fixed; top: 20px; right: 20px; background: #444; color: white; padding: 10px; border-radius: 5px; z-index: 1000;"></div>
 
 
@@ -288,7 +286,7 @@
                         assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.increment
                       endif
                     -%}
-                    Mann
+                    <span class="wishlist-heart" data-product-handle="{{ product.handle }}">&#x2764;</span>
                     {%- if product.quantity_price_breaks_configured? -%}
                       <price-per-item
                         id="Price-Per-Item-{{ section.id }}"
