@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (wishlist.length === 0) {
         wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
     } else {
-        wishlistContainer.innerHTML = '<p>Loading your wishlist...</p>'; // Indicate loading
+        // wishlistContainer.innerHTML = '<p>Loading your wishlist...</p>';
         wishlist.forEach(productHandle => {
             console.log(`Fetching product data for handle: ${productHandle}`); // Debugging line
             fetch(`/products/${productHandle}.js`)
