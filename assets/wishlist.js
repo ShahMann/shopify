@@ -2,31 +2,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
     wishlistButtons.forEach(button => {
-        const productHandle = button.getAttribute('data-product-handle');
-        if (isInWishlist(productHandle)) {
-            button.classList.add('added');
-        }
-
         button.addEventListener('click', function() {
             const productHandle = this.getAttribute('data-product-handle');
-            toggleWishlist(productHandle, this);
+            addToWishlist(productHandle);
         });
     });
 
-    function toggleWishlist(productHandle, element) {
+    function addToWishlist(productHandle) {
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        if (wishlist.includes(productHandle)) {
-            wishlist = wishlist.filter(handle => handle !== productHandle);
-            element.classList.remove('added');
-        } else {
+        if (!wishlist.includes(productHandle)) {
             wishlist.push(productHandle);
-            element.classList.add('added');
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            alert('Product added to wishlist');
+        } else {
+            alert('Product is already in your wishlist');
         }
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    }
-
-    function isInWishlist(productHandle) {
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        return wishlist.includes(productHandle);
     }
 });
