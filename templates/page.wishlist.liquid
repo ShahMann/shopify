@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (wishlist.length === 0) {
         wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
     } else {
+        wishlistContainer.innerHTML = ''; // Clear any existing content
         wishlist.forEach(productHandle => {
-            console.log(`Fetching product data for handle: ${productHandle}`);
+            console.log(`Fetching product data for handle: ${productHandle}`); // Debugging line
             fetch(`/products/${productHandle}.js`)
                 .then(response => {
                     if (!response.ok) {
@@ -19,13 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response.json();
                 })
                 .then(product => {
-                    console.log('Product data:', product);
+                    console.log('Product data:', product); // Debugging line
                     const productHtml = `
-                        <div class="wishlist-item">
+                        <div class="wishlist-item" data-product-handle="${product.handle}">
                             <a href="/products/${product.handle}">
                                 <img src="${product.images[0]}" alt="${product.title}">
                                 <p>${product.title}</p>
                             </a>
+                            <button class="remove-from-wishlist" data-product-handle="${product.handle}">&#x2716;</button> <!-- Remove button -->
                         </div>
                     `;
                     wishlistContainer.innerHTML += productHtml;
@@ -36,15 +38,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
     }
+
+    // Event delegation for removing items from the wishlist
+    wishlistContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-from-wishlist')) {
+            const productHandle = event.target.getAttribute('data-product-handle');
+            removeFromWishlist(productHandle);
+        }
+    });
+
+    function removeFromWishlist(productHandle) {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlist = wishlist.filter(handle => handle !== productHandle);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        document.querySelector(`.wishlist-item[data-product-handle="${productHandle}"]`).remove();
+        if (wishlist.length === 0) {
+            wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+        }
+    }
 });
 </script>
 
 <style>
 .wishlist-item {
     margin-bottom: 20px;
+    position: relative;
 }
 .wishlist-item img {
     max-width: 100px;
 }
+.remove-from-wishlist {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+}
 </style>
-
