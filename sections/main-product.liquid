@@ -3,6 +3,7 @@
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
 >
+      <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
   <button class="add-to-wishlist" data-product-id="{{ product.id }}">Add to Wishlist</button>
 
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
