@@ -287,10 +287,12 @@
                       endif
                     -%}
                     <!-- wishlist Icon  -->
+                    <div>
                     <span class="wishlist-container" data-product-handle="{{ product.handle }}">
                       <span class="wishlist-heart">&#x2764;</span>
                       <span class="wishlist-message">Product is not added in wishlist</span>
                     </span>
+                    </div>
 
                     {%- if product.quantity_price_breaks_configured? -%}
                       <price-per-item
