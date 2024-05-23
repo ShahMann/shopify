@@ -5,7 +5,7 @@
 >
       <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-      <i class="fas fa-heart add-to-wishlist" data-product-handle="{{ product.handle }}"></i>
+      <button class="fas fa-heart add-to-wishlist" data-product-handle="{{ product.handle }}"></button>
 
 
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
