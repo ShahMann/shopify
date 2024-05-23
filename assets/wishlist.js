@@ -1,15 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const wishlistHearts = document.querySelectorAll('.wishlist-heart');
+    const wishlistContainers = document.querySelectorAll('.wishlist-container');
     const notification = document.getElementById('wishlist-notification');
 
-    wishlistHearts.forEach(heart => {
-        const productHandle = heart.getAttribute('data-product-handle');
+    wishlistContainers.forEach(container => {
+        const productHandle = container.getAttribute('data-product-handle');
+        const heartElement = container.querySelector('.wishlist-heart');
+        const messageElement = container.querySelector('.wishlist-message');
+        
         if (isInWishlist(productHandle)) {
-            heart.classList.add('added');
+            heartElement.classList.add('added');
+            messageElement.textContent = 'Product is added in wishlist';
         }
 
-        heart.addEventListener('click', function() {
-            toggleWishlist(productHandle, heart);
+        container.addEventListener('click', function() {
+            toggleWishlist(productHandle, heartElement, messageElement);
         });
     });
 
@@ -18,15 +22,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return wishlist.includes(productHandle);
     }
 
-    function toggleWishlist(productHandle, heartElement) {
+    function toggleWishlist(productHandle, heartElement, messageElement) {
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
         if (wishlist.includes(productHandle)) {
             wishlist = wishlist.filter(handle => handle !== productHandle);
             heartElement.classList.remove('added');
+            messageElement.textContent = 'Product is not added in wishlist';
             showNotification('Product removed from wishlist');
         } else {
             wishlist.push(productHandle);
             heartElement.classList.add('added');
+            messageElement.textContent = 'Product is added in wishlist';
             showNotification('Product added to wishlist');
         }
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
