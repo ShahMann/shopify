@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (wishlist.includes(productHandle)) {
             wishlist = wishlist.filter(handle => handle !== productHandle);
             heartElement.classList.remove('added');
-            messageElement.textContent = 'Product is not added in wishlist';
+            messageElement.textContent = 'Add in wishlist';
             showNotification('Product removed from wishlist');
         } else {
             wishlist.push(productHandle);
