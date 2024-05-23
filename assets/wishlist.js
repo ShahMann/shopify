@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             wishlist.push(productHandle);
             heartElement.classList.add('added');
-            messageElement.textContent = 'Product is added in wishlist';
+            messageElement.textContent = 'Product is already in wishlist';
             showNotification('Product added to wishlist');
         }
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
