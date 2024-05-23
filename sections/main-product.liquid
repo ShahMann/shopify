@@ -286,7 +286,12 @@
                         assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.increment
                       endif
                     -%}
-                    <span class="wishlist-heart" data-product-handle="{{ product.handle }}">&#x2764;</span>
+                    <!-- wishlist Icon  -->
+                    <span class="wishlist-container" data-product-handle="{{ product.handle }}">
+                      <span class="wishlist-heart">&#x2764;</span>
+                      <span class="wishlist-message">Product is not added in wishlist</span>
+                    </span>
+
                     {%- if product.quantity_price_breaks_configured? -%}
                       <price-per-item
                         id="Price-Per-Item-{{ section.id }}"
