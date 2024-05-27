@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Event delegation for removing items from the wishlist
     wishlistContainer.addEventListener('click', function(event) {
         if (event.target.classList.contains('remove-from-wishlist')) {
             const productHandle = event.target.getAttribute('data-product-handle');
