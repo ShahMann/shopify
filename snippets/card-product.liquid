@@ -40,6 +40,23 @@
     endif
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div class="product-item">
+    <div class="product-image-wrapper">
+        <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+        </a>
+        <span class="wishlist-heart" data-product-handle="{{ product.handle }}">
+            &#x2764; <!-- Heart symbol -->
+        </span>
+    </div>
+    <div class="product-details">
+        <a href="{{ product.url }}">
+            <h2>{{ product.title }}</h2>
+            <p>{{ product.price | money }}</p>
+        </a>
+    </div>
+</div>
+
     <div
       class="
         card card--{{ settings.card_style }}
