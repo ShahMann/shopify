@@ -174,16 +174,7 @@
                     section_id: section.id
                   %}
                 </li>
-                 <div class="product-item">
-        <a href="{{ product.url }}">
-            <img src="{{ product.featured_image | img_url: '200x200' }}" alt="{{ product.title }}">
-            <p>{{ product.title }}</p>
-        </a>
-        <span class="wishlist-container" data-product-handle="{{ product.handle }}">
-            <span class="wishlist-heart">&#x2764;</span>
-            <span class="wishlist-message">Product is not added in wishlist</span>
-        </span>
-    </div>
+                
               {%- endfor -%}
               
             </ul>
