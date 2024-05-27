@@ -50,9 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (event.target.classList.contains('add-to-cart')) {
             event.preventDefault();
             const productHandle = event.target.getAttribute('data-product-handle');
-            const form = document.querySelector(`.product-form[data-product-handle="${productHandle}"]`);
-            form.submit();
-            showNotification('Product added to cart');
+            addToCart(productHandle);
         }
     });
 
@@ -65,6 +63,32 @@ document.addEventListener('DOMContentLoaded', function() {
             wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
         }
         showNotification('Product removed from wishlist');
+    }
+
+    function addToCart(productHandle) {
+        const form = document.querySelector(`.product-form[data-product-handle="${productHandle}"]`);
+        const formData = new FormData(form);
+        
+        fetch('/cart/add.js', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status && data.status !== 200) {
+                throw new Error(data.description);
+            }
+            showNotification('Product added to cart');
+            // Optionally, update the cart count or other UI elements here
+        })
+        .catch(error => {
+            console.error('There was a problem adding the product to the cart:', error);
+            showNotification('Failed to add product to cart');
+        });
     }
 
     function showNotification(message) {
