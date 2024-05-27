@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         wishlistContainer.innerHTML = '';
         wishlist.forEach(productHandle => {
-            console.log(`Fetching product data for handle: ${productHandle}`); 
+            // console.log(`Fetching product data for handle: ${productHandle}`); 
             fetch(`/products/${productHandle}.js`)
                 .then(response => {
                     if (!response.ok) {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response.json();
                 })
                 .then(product => {
-                    console.log('Product data:', product); 
+                    // console.log('Product data:', product); 
                     const productHtml = `
                         <div class="wishlist-item" data-product-handle="${product.handle}">
                             <a href="/products/${product.handle}">
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 .remove-from-wishlist {
     position: absolute;
-    top: 10px;
+    top: -30px;
     right: 10px;
     background: none;
     border: none;
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 #wishlist-notification {
     display: none;
     position: fixed;
-    top: -30px;
+    top: 20px;
     right: 20px;
     background: #444;
     color: white;
