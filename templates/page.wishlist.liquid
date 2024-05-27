@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const productHandle = event.target.getAttribute('data-product-handle');
             const form = document.querySelector(`.product-form[data-product-handle="${productHandle}"]`);
             form.submit();
-            event.preventDefault();
             showNotification('Product added to cart');
         }
     });
