@@ -6,14 +6,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const wishlistContainer = document.getElementById('wishlist-container');
     const notification = document.getElementById('wishlist-notification');
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
     if (wishlist.length === 0) {
         wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
     } else {
         wishlistContainer.innerHTML = '';
         wishlist.forEach(productHandle => {
-            // console.log(`Fetching product data for handle: ${productHandle}`); 
             fetch(`/products/${productHandle}.js`)
                 .then(response => {
                     if (!response.ok) {
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response.json();
                 })
                 .then(product => {
-                    // console.log('Product data:', product); 
                     const productHtml = `
                         <div class="wishlist-item" data-product-handle="${product.handle}">
                             <a href="/products/${product.handle}">
@@ -30,7 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <p>${product.title}</p>
                             </a>
                             <button class="remove-from-wishlist" data-product-handle="${product.handle}">&#x2716; Remove From Wishlist</button>
-                            <button class="add-to-cart" data-product-handle="${product.handle}"> Add to Cart</button>
+                            <form method="post" action="/cart/add" class="product-form" data-product-handle="${product.handle}">
+                                <input type="hidden" name="id" value="${product.variants[0].id}">
+                                <button type="submit" class="add-to-cart" data-product-handle="${product.handle}">Add to Cart</button>
+                            </form>
                         </div>
                     `;
                     wishlistContainer.innerHTML += productHtml;
@@ -46,11 +47,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target.classList.contains('remove-from-wishlist')) {
             const productHandle = event.target.getAttribute('data-product-handle');
             removeFromWishlist(productHandle);
+        } else if (event.target.classList.contains('add-to-cart')) {
+            event.preventDefault();
+            const productHandle = event.target.getAttribute('data-product-handle');
+            const form = document.querySelector(`.product-form[data-product-handle="${productHandle}"]`);
+            form.submit();
+            showNotification('Product added to cart');
         }
     });
 
     function removeFromWishlist(productHandle) {
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
         wishlist = wishlist.filter(handle => handle !== productHandle);
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
         document.querySelector(`.wishlist-item[data-product-handle="${productHandle}"]`).remove();
@@ -105,5 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
     right: 10px;
     cursor: pointer;
     font-size: 15px;
+}
+.product-form {
+    display: inline;
 }
 </style>
