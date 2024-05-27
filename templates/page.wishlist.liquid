@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <p>${product.title}</p>
                             </a>
                             <button class="remove-from-wishlist" data-product-handle="${product.handle}">&#x2716; Remove From Wishlist</button>
+                            <button class="add-to-cart" data-product-handle="${product.handle}"> Add to Cart</button>
                         </div>
                     `;
                     wishlistContainer.innerHTML += productHtml;
