@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             const productHandle = event.target.getAttribute('data-product-handle');
             addToCart(productHandle);
+          removeFromWishlist(productHandle);
         }
     });
 
