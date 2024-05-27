@@ -2,6 +2,19 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
+{% for product in collection.products %}
+    <div class="product-item" data-product-handle="{{ product.handle }}">
+        <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+            <span class="wishlist-container" data-product-handle="{{ product.handle }}">
+                <span class="wishlist-heart">&#x2764;</span>
+                <span class="wishlist-message">Product is not added in wishlist</span>
+            </span>
+        </a>
+        <p>{{ product.title }}</p>
+    </div>
+{% endfor %}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
