@@ -599,3 +599,45 @@
     </div>
   </div>
 {%- endif -%}
+<style>
+.wishlist_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.active_wishlist svg {
+  fill: black;
+}
+
+.product-card-wrapper {
+  overflow: hidden;
+}
+.wishlist_icon_wrapper:hover svg {
+  height: 28px !important;
+  width: 28px !important;
+  / background:red; /
+}
+
+@media screen and (min-width: 1024px) {
+  .wishlist_btn {
+    transform: translateX(100%);
+    visibility: hidden;
+  }
+
+  .product-card-wrapper:hover .wishlist_btn {
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+</style>
