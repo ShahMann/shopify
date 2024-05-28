@@ -39,7 +39,7 @@
       {
         "type": "number",
         "id": "number",
-        "label": "Enter CountDown Minutes"
+        "label": "Enter CountDown Value in Minutes"
       }
     ]
   },
