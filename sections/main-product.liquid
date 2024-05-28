@@ -16,8 +16,7 @@
   {% endunless %}
 
   {% if product.metafields.custom.count_down %}
-    Start Time is :{{ product.metafields.custom.count_down }}
-    End Time is :{{ product.metafields.custom.end_time }}
+    {{ product.metafields.custom.count_down }}
   {% endif %}
 
   {%- if product.quantity_price_breaks_configured? -%}
