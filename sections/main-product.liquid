@@ -17,45 +17,45 @@
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
-  {% if product.metafields.custom.count_down and product.metafields.custom.count_down != 0 %}
+  {% if product.metafields.custom.count_down %}
     {% assign countdown_minutes = product.metafields.custom.count_down %}
-    <div id="countdown"></div>
-  
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        var countdownMinutes = {{ countdown_minutes | default: 0 }};
-        var countdownDuration = countdownMinutes * 60 * 1000; 
-  
-        var endTime = localStorage.getItem('countdown_end_time_' + {{ product.id }});
-        var now = new Date().getTime();
-  
-        if (endTime && now < endTime) {
-          endTime = parseInt(endTime, 10);
-        } else {
-          endTime = now + countdownDuration;
-          localStorage.setItem('countdown_end_time_' + {{ product.id }}, endTime);
-        }
-        var countdownInterval = setInterval(function() {
-          now = new Date().getTime();
-          var count = endTime - now;
-  
-          var days = Math.floor(count / (1000 * 60 * 60 * 24));
-          var hours = Math.floor((count % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          var minutes = Math.floor((count % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((count % (1000 * 60)) / 1000);
-  
-          document.getElementById("countdown").innerHTML =
-            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-  
-          if (count < 0) {
-            clearInterval(countdownInterval);
-            document.getElementById("countdown").style.display = 'none';
-            localStorage.removeItem('countdown_end_time_' + {{ product.id }}); 
-          }
-        }, 1000);
-      });
-    </script>
+  {% else %}
+    {% assign countdown_minutes = 0 %}
   {% endif %}
+  
+  <div id="countdown"></div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var countdownMinutes = {{ countdown_minutes | default: 0 }};
+      var countdownDuration = countdownMinutes * 60 * 1000; // Convert minutes to milliseconds
+  
+      // Calculate the end time
+      var endTime = new Date().getTime() + countdownDuration;
+  
+      // Update the countdown every second
+      var countdownInterval = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = endTime - now;
+  
+        // Time calculations for days, hours, minutes, and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+        // Display the result in the element with id="countdown"
+        document.getElementById("countdown").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  
+        // If the countdown is over, write some text
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    });
+  </script>
   
   {%- style -%}
     .section-{{ section.id }}-padding {
