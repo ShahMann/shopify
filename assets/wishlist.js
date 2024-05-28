@@ -5,13 +5,15 @@ document.addEventListener('DOMContentLoaded', function() {
     wishlistContainers.forEach(container => {
         const productHandle = container.getAttribute('data-product-handle');
         const heartElement = container.querySelector('.wishlist-heart');
+        const messageElement = container.querySelector('.wishlist-message');
         
         if (isInWishlist(productHandle)) {
             heartElement.classList.add('added');
+            messageElement.textContent = 'Product is added in wishlist';
         }
-
+        
         container.addEventListener('click', function() {
-            toggleWishlist(productHandle, heartElement);
+            toggleWishlist(productHandle, heartElement, messageElement);
         });
     });
 
@@ -20,15 +22,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return wishlist.includes(productHandle);
     }
 
-    function toggleWishlist(productHandle, heartElement) {
+    function toggleWishlist(productHandle, heartElement, messageElement) {
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
         if (wishlist.includes(productHandle)) {
             wishlist = wishlist.filter(handle => handle !== productHandle);
             heartElement.classList.remove('added');
+            messageElement.textContent = 'Product is not added in wishlist';
             showNotification('Product removed from wishlist');
         } else {
             wishlist.push(productHandle);
             heartElement.classList.add('added');
+            messageElement.textContent = 'Product is added in wishlist';
             showNotification('Product added to wishlist');
         }
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
