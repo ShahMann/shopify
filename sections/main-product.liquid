@@ -17,6 +17,7 @@
 
   {% if product.metafields.custom.start_time != blank or product.metafields.custom.end_time!=blank %}
     {{ product.metafields.custom.start_time }}
+    
   {% endif %}
 
   {%- if product.quantity_price_breaks_configured? -%}
