@@ -34,7 +34,7 @@ function removeProductFromCart(productId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const countdownValue = window.cartCountdownValue;
+  const countdownValue = {{ settings.countdown_value }};
 
   document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', (event) => {
