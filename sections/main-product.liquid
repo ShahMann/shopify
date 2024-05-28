@@ -3,9 +3,6 @@
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
 >
-  {{ 'wishlist.css' | asset_url | stylesheet_tag }}
-      <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
-  <div id="wishlist-notification"></div>
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -17,6 +14,8 @@
     {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
+
+  
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
@@ -388,11 +387,6 @@
                       </span>
                     {%- endif -%}
                   </div>
-                    <!-- wishlist Icon  -->
-                    <span class="wishlist-container" data-product-handle="{{ product.handle }}">
-                      <span class="wishlist-heart">&#x2764;</span>
-                      <span class="wishlist-message">Add in wishlist</span>
-                    </span>
                   {%- if product.quantity_price_breaks_configured? -%}
                     <volume-pricing class="parent-display" id="Volume-{{ section.id }}">
                       {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
