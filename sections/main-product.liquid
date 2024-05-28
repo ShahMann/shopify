@@ -3,6 +3,7 @@
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
 >
+  <script src="{{ 'countdown.js' | asset_url }}" defer="defer"></script>
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -20,7 +21,6 @@
   {% if product.metafields.custom.count_down and product.metafields.custom.count_down != 0 %}
     {% assign countdown_minutes = product.metafields.custom.count_down %}
     <div id="countdown"></div>
-    <script src="{{ 'countdown.js' | asset_url }}" defer="defer"></script>
 
   {% endif %}
   
