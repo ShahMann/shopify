@@ -26,7 +26,7 @@
       document.addEventListener("DOMContentLoaded", function() {
         var countdownMinutes = {{ countdown_minutes | default: 0 }};
         var countdownDuration = countdownMinutes * 60 * 1000; 
-  
+        console.log("mann" . window.cartCountdownValue)
         var endTime = localStorage.getItem('countdown_end_time_' + {{ product.id }});
         var now = new Date().getTime();
   
