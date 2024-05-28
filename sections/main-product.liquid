@@ -15,10 +15,10 @@
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
 
-  {% if product.metafields.custom.start_time or product.metafields.custom.end_time %}
+  {% if product.metafields.custom.start_time != blank or product.metafields.custom.end_time!=blank %}
     {{ product.metafields.custom.start_time }}
   {% endif %}
-  
+
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
