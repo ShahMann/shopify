@@ -123,8 +123,8 @@ if (!customElements.get('product-form')) {
       }
 
       startCountdownTimer(productId, countdownValue) {
-        const expiryTime = new Date().getTime() + countdownValue * 60 * 1000; // Calculate expiry time
-        localStorage.setItem(productId, expiryTime); // Store expiry time in localStorage
+        const expiryTime = new Date().getTime() + countdownValue * 60 * 1000; 
+        localStorage.setItem(productId, expiryTime); 
 
         const timerId = setInterval(() => {
           const currentTime = new Date().getTime();
