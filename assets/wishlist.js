@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             wishlist.push(productHandle);
             buttonElement.classList.add('active_wishlist');
-            showNotification('Product added to wishlist');
+            // showNotification('Product added to wishlist');
         }
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
