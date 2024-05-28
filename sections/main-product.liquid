@@ -19,6 +19,7 @@
   {%- endif -%}
   {% if product.metafields.custom.count_down and product.metafields.custom.count_down != 0 %}
     {% assign countdown_minutes = product.metafields.custom.count_down %}
+    Hello {{ settings.countdown_value }}
     <div id="countdown"></div>
   
     <script>
