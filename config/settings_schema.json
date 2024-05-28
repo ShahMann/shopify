@@ -34,7 +34,7 @@
     ]
   },
   {
-    "name": "t:settings_schema.cart_countdown",
+    "name": "t:settings_schema.cart.countdown",
     "settings": [
       {
         "type": "number",
