@@ -1,8 +1,7 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
-<div id="wishlist-notification"
-  style="display: none; position: fixed; top: 20px; right: 20px; background: #444; color: white; padding: 10px; border-radius: 5px; z-index: 1000;"
+<div class="wishlist-notification" 
   ></div>
 
 {% if section.settings.image_shape == 'blob' %}
