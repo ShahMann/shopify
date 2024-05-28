@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize heart icons on catalog page
     wishlistButtons.forEach(button => {
         const productHandle = button.getAttribute('product-handle-wishlist');
         const heartIcon = button.querySelector('svg');
@@ -72,9 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (notification) {
             notification.textContent = message;
             notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 300000);
+            // setTimeout(() => {
+            //     notification.style.display = 'none';
+            // }, 300000);
         }
     }
 });
