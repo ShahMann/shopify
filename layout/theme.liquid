@@ -9,6 +9,9 @@
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
+{% if settings.countdown_value %}
+  <script src="{{ 'countdown.js' | asset_url }}" defer="defer"></script>
+{% endif %}
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
