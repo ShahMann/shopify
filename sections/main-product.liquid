@@ -34,34 +34,28 @@
       var now = new Date().getTime();
   
       if (endTime && now < endTime) {
-        // If endTime is in the future, use it
         endTime = parseInt(endTime, 10);
       } else {
-        // If not, calculate a new endTime and store it in localStorage
         endTime = now + countdownDuration;
         localStorage.setItem('countdown_end_time', endTime);
       }
   
-      // Update the countdown every second
       var countdownInterval = setInterval(function() {
         now = new Date().getTime();
         var distance = endTime - now;
   
-        // Time calculations for days, hours, minutes, and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
   
-        // Display the result in the element with id="countdown"
         document.getElementById("countdown").innerHTML =
           days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
   
-        // If the countdown is over, write some text
         if (distance < 0) {
           clearInterval(countdownInterval);
           document.getElementById("countdown").innerHTML = "EXPIRED";
-          localStorage.removeItem('countdown_end_time'); // Clear the stored endTime
+          localStorage.removeItem('countdown_end_time'); 
         }
       }, 1000);
     });
