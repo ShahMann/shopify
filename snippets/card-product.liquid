@@ -1,4 +1,3 @@
-<div id="wishlist-notification" style="display: none; position: fixed; top: 20px; right: 20px; background: #444; color: white; padding: 10px; border-radius: 5px; z-index: 1000;"></div>
 {% comment %}
   Renders a product card
 
@@ -27,6 +26,7 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+<div id="wishlist-notification" style="display: none; position: fixed; top: 20px; right: 20px; background: #444; color: white; padding: 10px; border-radius: 5px; z-index: 1000;"></div>
 {%- if card_product and card_product != empty -%}
   {%- liquid
     assign ratio = 1
@@ -629,15 +629,16 @@
   / background:red; /
 }
 .wishlist-notification {
-    display: none;
     position: fixed;
-    top: 20px;
+    top: -20px;
     right: 20px;
     background: #444;
     color: white;
     padding: 10px;
     border-radius: 5px;
     z-index: 1000;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
 }
 
 
