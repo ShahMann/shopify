@@ -50,7 +50,7 @@
   
           if (countdown_begain < 0) {
             clearInterval(countdownInterval);
-            {% comment %} document.getElementById("countdown").style.display = 'none'; {% endcomment %}
+            // document.getElementById("countdown").style.display = 'none';
             document.getElementById("countdown").innerHTML = "CountDown is expired";
             localStorage.removeItem('countdown_end_time_' + {{ product.id }}); 
           }
