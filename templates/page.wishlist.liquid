@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(data.description);
             }
             showNotification('Product added to cart');
-            // Optionally, update the cart count or other UI elements here
         })
         .catch(error => {
             console.error('There was a problem adding the product to the cart:', error);
