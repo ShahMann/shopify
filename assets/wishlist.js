@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const wishlistButtons = document.querySelectorAll('.wishlist_btn');
     const notification = document.getElementById('wishlist-notification');
 
-    // Initialize heart icons on product detail page
     wishlistContainers.forEach(container => {
         const productHandle = container.getAttribute('data-product-handle');
         const heartElement = container.querySelector('.wishlist-heart');
@@ -11,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (isInWishlist(productHandle)) {
             heartElement.classList.add('added');
-            messageElement.textContent = 'Product is added in wishlist';
+            // messageElement.textContent = 'Product is added in wishlist';
         }
 
         container.addEventListener('click', function() {
