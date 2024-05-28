@@ -75,7 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 3000);
-        } else {
+        } 
+        else {
             const newNotification = document.createElement('div');
             newNotification.className = 'wishlist-notification';
             newNotification.textContent = message;
