@@ -14,6 +14,10 @@
     {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
+Hello
+  {% if product.metafields.custom.start_time or product.metafields.custom.end_time %}
+    {{ product.metafields.custom.start_time }}
+  {% endif %}
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
