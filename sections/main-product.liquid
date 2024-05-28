@@ -14,42 +14,6 @@
     {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
-
-  {% if product.metafields.custom.count_down != blank %}
-    {% assign countdown_minutes = product.metafields.custom.count_down %}
-  {% else %}
-    {% assign countdown_minutes = 0 %}
-  {% endif %}
-
-  <div id="countdown"></div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var countdownMinutes = {{ countdown_minutes | default: 0 }};
-      var countdownDuration = countdownMinutes * 60 * 1000;
-
-      var endTime = new Date().getTime() + countdownDuration;
-
-      var countdownInterval = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = endTime - now;
-
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("countdown").innerHTML =
-          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-        if (distance < 0) {
-          clearInterval(countdownInterval);
-          document.getElementById("countdown").innerHTML = "EXPIRED";
-        }
-      }, 1000);
-    });
-  </script>
-
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
@@ -596,9 +560,9 @@
                                   -%}
                                     <li>
                                       {%- if block.settings.enable_quick_add -%}
-                                        {% assign quick_add = 'standard' %}
+                                        {% assign quick_add = "standard" %}
                                       {%- else -%}
-                                        {% assign quick_add = 'none' %}
+                                        {% assign quick_add = "none" %}
                                       {%- endif -%}
                                       {% render 'card-product',
                                         card_product: product,
