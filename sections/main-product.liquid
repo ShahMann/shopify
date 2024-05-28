@@ -17,7 +17,46 @@
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
-
+  {% if product.metafields.custom.count_down %}
+    {% assign countdown_minutes = product.metafields.custom.count_down %}
+  {% else %}
+    {% assign countdown_minutes = 0 %}
+  {% endif %}
+  
+  <div id="countdown"></div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var countdownMinutes = {{ countdown_minutes | default: 0 }};
+      var countdownDuration = countdownMinutes * 60 * 1000; // Convert minutes to milliseconds
+  
+      // Calculate the end time
+      var endTime = new Date().getTime() + countdownDuration;
+  
+      // Update the countdown every second
+      var countdownInterval = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = endTime - now;
+  
+        // Time calculations for days, hours, minutes, and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+        // Display the result in the element with id="countdown"
+        document.getElementById("countdown").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  
+        // If the countdown is over, write some text
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    });
+  </script>
+  
   {%- style -%}
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
