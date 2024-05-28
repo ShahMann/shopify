@@ -26,6 +26,7 @@
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+<div id="wishlist-notification" style="display: none; position: fixed; top: 20px; right: 20px; background: #444; color: white; padding: 10px; border-radius: 5px; z-index: 1000;"></div>
 
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -605,44 +606,30 @@
   </div>
 {%- endif -%}
 <style>
-.wishlist_btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.3s linear;
-  cursor: pointer;
+.wishlist-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-.active_wishlist svg {
-  fill: black;
+.wishlist-heart {
+    font-size: 26px;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.wishlist-heart.added {
+    color: red;
 }
 
 .product-card-wrapper {
-  overflow: hidden;
-}
-.wishlist_icon_wrapper:hover svg {
-  height: 28px !important;
-  width: 28px !important;
-  / background:red; /
+    position: relative;
+    overflow: hidden;
 }
 
-@media screen and (min-width: 1024px) {
-  .wishlist_btn {
-    transform: translateX(100%);
-    visibility: hidden;
-  }
-
-  .product-card-wrapper:hover .wishlist_btn {
-    transform: translateX(0);
-    visibility: visible;
-  }
-}
 </style>
