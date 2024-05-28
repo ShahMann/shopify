@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             wishlist.push(productHandle);
             heartElement.classList.add('added');
             messageElement.textContent = 'Product is added in wishlist';
-            // showNotification('Product added to wishlist');
+            showNotification('Product added to wishlist');
         }
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 notification.style.display = 'none';
             }, 3000);
         } else {
-            // Create and show notification if it doesn't exist
             const newNotification = document.createElement('div');
             newNotification.className = 'wishlist-notification';
             newNotification.textContent = message;
