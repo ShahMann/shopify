@@ -38,7 +38,7 @@
     "settings": [
       {
         "type": "number",
-        "id": "number",
+        "id": "countdown_value",
         "label": "Enter CountDown Value in Minutes"
       }
     ]
