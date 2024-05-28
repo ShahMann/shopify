@@ -1,0 +1,140 @@
+<h1>Your Wishlist</h1>
+<div id="wishlist-container"></div>
+<div id="wishlist-notification"></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const wishlistContainer = document.getElementById('wishlist-container');
+    const notification = document.getElementById('wishlist-notification');
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+    } else {
+        wishlistContainer.innerHTML = '';
+        wishlist.forEach(productHandle => {
+            fetch(`/products/${productHandle}.js`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok for product handle: ${productHandle}`);
+                    }
+                    return response.json();
+                })
+                .then(product => {
+                    const productHtml = `
+                        <div class="wishlist-item" data-product-handle="${product.handle}">
+                            <a href="/products/${product.handle}">
+                                <img src="${product.images[0]}" alt="${product.title}">
+                                <p>${product.title}</p>
+                            </a>
+                            <button class="remove-from-wishlist" data-product-handle="${product.handle}">&#x2716; Remove From Wishlist</button>
+                            <form method="post" action="/cart/add" class="product-form" data-product-handle="${product.handle}">
+                                <input type="hidden" name="id" value="${product.variants[0].id}">
+                                <button type="submit" class="add-to-cart" data-product-handle="${product.handle}">Add to Cart</button>
+                            </form>
+                        </div>
+                    `;
+                    wishlistContainer.innerHTML += productHtml;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    wishlistContainer.innerHTML += `<p>Failed to load product with handle: ${productHandle}</p>`;
+                });
+        });
+    }
+
+    wishlistContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-from-wishlist')) {
+            const productHandle = event.target.getAttribute('data-product-handle');
+            removeFromWishlist(productHandle);
+        } else if (event.target.classList.contains('add-to-cart')) {
+            event.preventDefault();
+            const productHandle = event.target.getAttribute('data-product-handle');
+            addToCart(productHandle);
+        }
+    });
+
+    function removeFromWishlist(productHandle) {
+        wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        wishlist = wishlist.filter(handle => handle !== productHandle);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        document.querySelector(`.wishlist-item[data-product-handle="${productHandle}"]`).remove();
+        if (wishlist.length === 0) {
+            wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+        }
+        showNotification('Product removed from wishlist');
+    }
+
+    function addToCart(productHandle) {
+        const form = document.querySelector(`.product-form[data-product-handle="${productHandle}"]`);
+        const formData = new FormData(form);
+        
+        fetch('/cart/add.js', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status && data.status !== 200) {
+                throw new Error(data.description);
+            }
+            showNotification('Product added to cart');
+        })
+        .catch(error => {
+            console.error('There was a problem adding the product to the cart:', error);
+            showNotification('Failed to add product to cart');
+        });
+    }
+
+    function showNotification(message) {
+        notification.textContent = message;
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    }
+});
+</script>
+
+<style>
+.wishlist-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+.wishlist-item img {
+    max-width: 100px;
+}
+.remove-from-wishlist {
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+}
+#wishlist-notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #444;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+.add-to-cart {
+    position: absolute;
+    bottom: 40px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.product-form {
+    display: inline;
+}
+</style>

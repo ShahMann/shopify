@@ -19,14 +19,13 @@
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
 {% endcomment %}
-
+<script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
 
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
-
 {%- if card_product and card_product != empty -%}
   {%- liquid
     assign ratio = 1
@@ -40,6 +39,19 @@
     endif
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
+        <span class="wishlist_btn" product-handle-wishlist="{{ card_product.handle }}">
+      <svg
+        width="26px"
+        height="26px"
+        viewBox="0 0 64 64"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke-width="3"
+        stroke="#000000"
+        fill="none"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"></path></g>
+      </svg>
+    </span>
     <div
       class="
         card card--{{ settings.card_style }}
@@ -586,3 +598,57 @@
     </div>
   </div>
 {%- endif -%}
+<style>
+.wishlist_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.active_wishlist svg {
+  fill: red;
+}
+
+.product-card-wrapper {
+  overflow: hidden;
+}
+.wishlist_icon_wrapper:hover svg {
+  height: 28px !important;
+  width: 28px !important;
+}
+.wishlist-notification {
+    position: fixed;
+    top: -20px;
+    right: 20px;
+    background: #444;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+
+@media screen and (min-width: 1024px) {
+  .wishlist_btn {
+    transform: translateX(100%);
+    visibility: hidden;
+  }
+
+  .product-card-wrapper:hover .wishlist_btn {
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+</style>
