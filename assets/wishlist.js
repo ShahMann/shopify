@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (isInWishlist(productHandle)) {
             heartElement.classList.add('added');
-            // messageElement.textContent = 'Product is added in wishlist';
+            messageElement.textContent = 'Product is added in wishlist';
         }
 
         container.addEventListener('click', function() {
