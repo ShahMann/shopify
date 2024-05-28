@@ -82,29 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(data.description);
             }
             showNotification('Product added to cart');
-            updateMiniCart(); // Call to update the mini cart
         })
         .catch(error => {
             console.error('There was a problem adding the product to the cart:', error);
             showNotification('Failed to add product to cart');
         });
-    }
-
-    function updateMiniCart() {
-        fetch('/cart?view=mini')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok.');
-                }
-                return response.text();
-            })
-            .then(html => {
-                const miniCartContainer = document.querySelector('#mini-cart-container');
-                miniCartContainer.innerHTML = html;
-            })
-            .catch(error => {
-                console.error('There was a problem updating the mini cart:', error);
-            });
     }
 
     function showNotification(message) {
