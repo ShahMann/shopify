@@ -37,7 +37,7 @@
     "name": "Cart Countdown",
     "settings": [
       {
-        "type": "number",
+        "type": "text",
         "id": "countdown_value",
         "label": "Enter CountDown Value in Minutes"
       }
