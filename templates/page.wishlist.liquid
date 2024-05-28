@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(data.description);
             }
             showNotification('Product added to cart');
+          removeFromWishlist(productHandle)
         })
         .catch(error => {
             console.error('There was a problem adding the product to the cart:', error);
