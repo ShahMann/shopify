@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const wishlistButtons = document.querySelectorAll('.wishlist_btn');
     const notification = document.getElementById('wishlist-notification');
 
+    // Initialize heart icons on product detail page
     wishlistContainers.forEach(container => {
         const productHandle = container.getAttribute('data-product-handle');
         const heartElement = container.querySelector('.wishlist-heart');
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Initialize heart icons on catalog page
     wishlistButtons.forEach(button => {
         const productHandle = button.getAttribute('product-handle-wishlist');
         const heartIcon = button.querySelector('svg');
@@ -26,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
             button.classList.add('active_wishlist');
         }
 
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(event) {
+            event.stopPropagation();
             toggleWishlistCatalog(productHandle, button);
         });
     });
