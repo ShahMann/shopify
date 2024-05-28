@@ -87,6 +87,10 @@ if (!customElements.get('product-form')) {
             } else {
               this.cart.renderContents(response);
             }
+
+            const countdownValue = this.getCountdownValue(); 
+            const productId = formData.get('id');
+            this.startCountdownTimer(productId, countdownValue);
           })
           .catch((e) => {
             console.error(e);
@@ -112,6 +116,29 @@ if (!customElements.get('product-form')) {
         if (errorMessage) {
           this.errorMessage.textContent = errorMessage;
         }
+      }
+
+      getCountdownValue() {
+        return parseInt(document.querySelector('#countdown_value').value); 
+      }
+
+      startCountdownTimer(productId, countdownValue) {
+        const expiryTime = new Date().getTime() + countdownValue * 60 * 1000; // Calculate expiry time
+        localStorage.setItem(productId, expiryTime); // Store expiry time in localStorage
+
+        const timerId = setInterval(() => {
+          const currentTime = new Date().getTime();
+          const remainingTime = expiryTime - currentTime;
+
+          if (remainingTime <= 0) {
+            this.removeExpiredProduct(productId);
+            clearInterval(timerId); 
+          }
+        }, 1000);
+      }
+
+      removeExpiredProduct(productId) {
+        $(`[data-product-id="${productId}"]`).remove(); 
       }
     }
   );
