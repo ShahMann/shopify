@@ -15,7 +15,7 @@
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
 
-  {% if product.metafields.custom.start_time != blank and product.metafields.custom.end_time != blank %}
+  {% if product.metafields.custom.start_time != blank and product.metafields.custom.end_time != blank and product.metafields.custom.end_time %}
     <div id="countdown-timer"></div>
     <script>
       var startTime = "{{ product.metafields.custom.start_time }}";
