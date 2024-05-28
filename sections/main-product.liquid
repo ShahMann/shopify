@@ -51,7 +51,7 @@
           if (countdown_begain < 0) {
             clearInterval(countdownInterval);
             // document.getElementById("countdown").style.display = 'none';
-            document.getElementById("countdown").innerHTML = "CountDown is expired";
+            document.getElementById("countdown").innerHTML = "Count Down is expired";
             localStorage.removeItem('countdown_end_time_' + {{ product.id }}); 
           }
         }, 1000);
