@@ -8,6 +8,16 @@
     "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
+    "name": "Cart Countdown",
+    "settings": [
+      {
+        "type": "number",
+        "id": "countdown_value",
+        "label": "Enter CountDown Value in Minutes"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {
@@ -30,16 +40,6 @@
         "id": "favicon",
         "label": "t:settings_schema.logo.settings.favicon.label",
         "info": "t:settings_schema.logo.settings.favicon.info"
-      }
-    ]
-  },
-  {
-    "name": "Cart Countdown",
-    "settings": [
-      {
-        "type": "number",
-        "id": "countdown_value",
-        "label": "Enter CountDown Value in Minutes"
       }
     ]
   },
