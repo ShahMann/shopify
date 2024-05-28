@@ -8,3 +8,15 @@
 .wishlist-heart.added {
     color: red; 
 }
+#wishlist-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #444;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
