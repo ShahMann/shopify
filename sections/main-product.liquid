@@ -54,7 +54,8 @@
   
         if (distance < 0) {
           clearInterval(countdownInterval);
-          document.getElementById("countdown").innerHTML = "EXPIRED";
+          document.getElementById("countdown").style.display = 'none';
+          {% comment %} document.getElementById("countdown").innerHTML = "EXPIRED"; {% endcomment %}
           localStorage.removeItem('countdown_end_time'); 
         }
       }, 1000);
