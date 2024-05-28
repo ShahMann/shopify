@@ -75,14 +75,15 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 3000);
-        } else {
-            const newNotification = document.createElement('div');
-            newNotification.className = 'wishlist-notification';
-            newNotification.textContent = message;
-            document.body.appendChild(newNotification);
-            setTimeout(() => {
-                newNotification.remove();
-            }, 3000);
-        }
+        } 
+        // else {
+        //     const newNotification = document.createElement('div');
+        //     newNotification.className = 'wishlist-notification';
+        //     newNotification.textContent = message;
+        //     document.body.appendChild(newNotification);
+        //     setTimeout(() => {
+        //         newNotification.remove();
+        //     }, 3000);
+        // }
     }
 });
