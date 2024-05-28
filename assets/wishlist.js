@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             notification.style.display = 'block';
             setTimeout(() => {
                 notification.style.display = 'none';
-            }, 3000);
+            }, 30000);
         }
     }
 });
