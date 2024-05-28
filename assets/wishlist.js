@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             wishlist.push(productHandle);
             heartElement.classList.add('added');
             messageElement.textContent = 'Product is added in wishlist';
-            showNotification('Product added to wishlist');
+            // showNotification('Product added to wishlist');
         }
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }
