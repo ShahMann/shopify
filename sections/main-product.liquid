@@ -14,6 +14,41 @@
     {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
+
+  {% if product.metafields.custom.start_time != blank and product.metafields.custom.end_time != blank %}
+    <div id="countdown-timer"></div>
+    <script>
+      var startTime = "{{ product.metafields.custom.start_time }}";
+      var endTime = "{{ product.metafields.custom.end_time }}";
+      function updateCountdown() {
+        var start = new Date(startTime);
+        var end = new Date(endTime);
+        var now = new Date();
+        
+        if (now >= start && now <= end) {
+          var distance = end - now;
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+          document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h "
+          + minutes + "m " + seconds + "s ";
+    
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+          }
+        } else {
+          document.getElementById("countdown-timer").innerHTML = "Countdown not active";
+        }
+      }
+    
+      var x = setInterval(updateCountdown, 1000);
+    </script>
+  {% endif %}
+  
+
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
