@@ -1,3 +1,4 @@
+console.log("Hello mann");
 function setupAddToCartListener(form, submitButton) {
     submitButton.addEventListener('click', async () => {
       const formData = new FormData(form);
