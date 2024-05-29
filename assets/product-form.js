@@ -173,7 +173,7 @@ if (!customElements.get('product-form')) {
       }
       
       removeExpiredProductFromCart(variantId) {
-        fetch('/cart/change', {
+        fetch('/cart/change.js', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
