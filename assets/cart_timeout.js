@@ -1,4 +1,4 @@
-console.log("Hello mann");
+console.log("Hello mann, calling From New JS");
 function setupAddToCartListener(form, submitButton) {
     submitButton.addEventListener('click', async () => {
       const formData = new FormData(form);
