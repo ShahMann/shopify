@@ -183,6 +183,7 @@ if (!customElements.get('product-form')) {
             throw new Error('Failed to remove item from cart');
           }
           console.log(`Variant ID ${variantId} removed from the cart.`);
+          window.location.reload();
         })
         .catch((error) => {
           console.error('Error removing item from cart:', error);
