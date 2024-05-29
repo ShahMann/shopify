@@ -117,7 +117,10 @@ if (!customElements.get('product-form')) {
 
         this.cartItems.push(cartItem);
 
-        this.updateCountdownDisplay();
+        setInterval(() => {
+          this.updateCountdownDisplay();
+        }, 1000);
+
 
         setTimeout(() => {
           this.removeExpiredItems();
