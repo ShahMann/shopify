@@ -37,7 +37,7 @@ if (!customElements.get('product-form')) {
       this.cartItems[formData.get('id')] = new Date().getTime();
 
       // Get the countdown value from your Shopify settings
-      const countdownValue = {{ settings.countdown_value }};
+      const countdownValue =  1;
 
       // Start the countdown timer for the added product
       this.startCountdown(formData.get('id'), countdownValue);
