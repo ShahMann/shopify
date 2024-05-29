@@ -18,6 +18,7 @@
     }
   }
 {%- endstyle -%}
+  <script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
 
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
