@@ -145,6 +145,5 @@ if (!customElements.get('product-form')) {
         localStorage.setItem('cartTimerData', JSON.stringify(cartItemData));
       }
     }
-    }
   );
 }
