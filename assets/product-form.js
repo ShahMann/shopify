@@ -1,4 +1,4 @@
-const countdownValue = parseInt(document.querySelector('[data-setting="countdown_value"]').value) || 1;
+const countdownValue = 1;
 
 if (!customElements.get('product-form')) {
   customElements.define(
@@ -75,7 +75,6 @@ if (!customElements.get('product-form')) {
                 cartData: response,
               });
 
-              // Start the countdown for the new product added to the cart
               this.startCountdown(formData.get('id'), response);
             }
             this.error = false;
