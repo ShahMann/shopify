@@ -139,7 +139,6 @@ if (!customElements.get('product-form')) {
               localStorage.setItem(`cartItemExpirationTime-${data.variant_id}`, expirationTime);
               console.log(`Variant ID ${data.variant_id} added to cart. Expiration time set to:`, new Date(expirationTime));
       
-              // Start timer to remove product after expiration
               setTimeout(() => {
                 this.removeExpiredProductFromCart(data.variant_id);
               }, expirationTime - timestamp);
@@ -148,7 +147,6 @@ if (!customElements.get('product-form')) {
             console.error(error);
           }
         });
-        // Check for expired products when the page loads
         this.checkExpiredProducts();
       }
       
@@ -163,7 +161,6 @@ if (!customElements.get('product-form')) {
             console.log("varientId =", variantId)
       
             if (expirationTime && currentTime >= expirationTime) {
-              // Remove product from the cart
               console.log(`Variant ID ${variantId} expired and removed from the cart.`);
               this.removeExpiredProductFromCart(variantId);
               localStorage.removeItem(key);
