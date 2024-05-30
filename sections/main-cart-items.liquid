@@ -464,14 +464,13 @@
     countdownTimers.forEach(function(timer) {
       var variantId = timer.dataset.variantId;
       var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
-      console.log("The time expires in " + cartTimerData[1]);
+
       var cartItemData = cartTimerData.find(function(item) {
-        return item.variant_id === variantId;
+        return item.variant_id.toString() === variantId;
       });
 
-      if (cartItemData) {
-        var addedTime = new Date(cartItemData.added_time);
-        var expirationTime = new Date(addedTime.getTime() + 1 * 60000);
+      if (cartItemData && cartItemData.expiration_time) {
+        var expirationTime = new Date(cartItemData.expiration_time);
 
         function updateCountdown() {
           var now = new Date().getTime();
@@ -490,7 +489,7 @@
         }
 
         var countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown(); 
+        updateCountdown(); // Update the countdown immediately
       }
     });
   });
