@@ -18,7 +18,7 @@
     }
   }
 {%- endstyle -%}
-  <script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
 
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
@@ -75,9 +75,7 @@
                   <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">
                     {{ 'sections.cart.headings.total' | t }}
                   </th>
-                  <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">
-                  Expires In
-                  </th>
+                  <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">Expires In</th>
                 </tr>
               </thead>
 
@@ -433,9 +431,9 @@
                         {%- endif -%}
                       </div>
                     </td>
-                  <td class="cart-item__countdown small-hide right">
-                    <span class="countdown-timer" data-variant-id="{{ item.variant.id }}"></span>
-                  </td>
+                    <td class="cart-item__countdown small-hide right">
+                      <span class="countdown-timer" data-variant-id="{{ item.variant.id }}"></span>
+                    </td>
                   </tr>
                 {%- endfor -%}
               </tbody>
@@ -458,39 +456,38 @@
   </div>
 </cart-items>
 <script>
- document.addEventListener('DOMContentLoaded', function() {
-  var countdownTimers = document.querySelectorAll('.countdown-timer');
+  document.addEventListener('DOMContentLoaded', function () {
+    var countdownTimers = document.querySelectorAll('.countdown-timer');
 
-  countdownTimers.forEach(function(timer) {
-    var variantId = timer.dataset.variantId;
-    var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
-    var cartItemData = cartTimerData.find(item => item.variant_id.toString() === variantId);
-    console.log(cartItemData.expiration_time);
-    if (cartItemData && cartItemData.expiration_time) {
-      var expirationTime = new Date(cartItemData.expiration_time);
+    countdownTimers.forEach(function (timer) {
+      var variantId = timer.dataset.variantId;
+      var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
+      var cartItemData = cartTimerData.find((item) => item.variant_id.toString() === variantId);
+      console.log(cartItemData.expiration_time);
+      if (cartItemData && cartItemData.expiration_time) {
+        var expirationTime = new Date(cartItemData.expiration_time);
 
-      function updateCountdown() {
-        var now = new Date().getTime();
-        var distance = expirationTime - now;
+        function updateCountdown() {
+          var now = new Date().getTime();
+          var distance = expirationTime - now;
 
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        timer.textContent = `${minutes}m ${seconds}s`;
+          timer.textContent = `${minutes}m ${seconds}s`;
 
-        if (distance < 0) {
-          clearInterval(countdownInterval);
-          timer.textContent = "Expired";
-          removeCartData(variantId); 
+          if (distance < 0) {
+            clearInterval(countdownInterval);
+            timer.textContent = 'Expired';
+            removeCartData(variantId);
+          }
         }
+
+        var countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
       }
-
-      var countdownInterval = setInterval(updateCountdown, 1000);
-      updateCountdown(); 
-    }
+    });
   });
-});
-
 </script>
 {% schema %}
 {
