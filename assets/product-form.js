@@ -115,35 +115,57 @@ if (!customElements.get('product-form')) {
         }
       }
 
-      cartTimerData(response){
-        var currentDateTime = new Date();
-        var cartTimerData = [];
-        var cartItemData = [];
+      cartTimerData(response) {
+  var currentDateTime = new Date();
+  var cartTimerData = [];
+  var cartItemData = [];
 
-        cartTimerData = JSON.parse(localStorage.getItem('cartTimerData'));
+  cartTimerData = JSON.parse(localStorage.getItem('cartTimerData'));
 
-        if (!cartTimerData) {
-          cartItemData = [
-            { variant_id: response['variant_id'], added_time: currentDateTime }
-          ];
-        } else {
-          cartItemData = cartTimerData;
-          cartItemData.push({ variant_id: response['variant_id'], added_time: currentDateTime });
-        }
+  if (!cartTimerData) {
+    // Calculate the expiration time (5 minutes from the current time)
+    var expirationTime = new Date(currentDateTime.getTime() + 5 * 60000);
 
-        const latestTimes = new Map();
-        cartItemData.forEach(item => {
-            const { variant_id, added_time } = item;
-            if (!latestTimes.has(variant_id) || new Date(added_time) > new Date(latestTimes.get(variant_id))) {
-                latestTimes.set(variant_id, added_time);
-            }
-        });
-        cartItemData = (Array.from(
-          latestTimes, ([variant_id, added_time]) => ({ variant_id, added_time })
-        ));
-
-        localStorage.setItem('cartTimerData', JSON.stringify(cartItemData));
+    cartItemData = [
+      {
+        variant_id: response['variant_id'],
+        added_time: currentDateTime,
+        expiration_time: expirationTime.toISOString() // Store the expiration time as an ISO string
       }
+    ];
+  } else {
+    cartItemData = cartTimerData;
+
+    // Calculate the expiration time (5 minutes from the current time)
+    var expirationTime = new Date(currentDateTime.getTime() + 5 * 60000);
+
+    cartItemData.push({
+      variant_id: response['variant_id'],
+      added_time: currentDateTime,
+      expiration_time: expirationTime.toISOString() // Store the expiration time as an ISO string
+    });
+  }
+
+  const latestTimes = new Map();
+  cartItemData.forEach(item => {
+    const { variant_id, added_time, expiration_time } = item;
+
+    if (!latestTimes.has(variant_id) || new Date(added_time) > new Date(latestTimes.get(variant_id))) {
+      latestTimes.set(variant_id, { added_time, expiration_time });
+    }
+  });
+
+  cartItemData = Array.from(
+    latestTimes,
+    ([variant_id, { added_time, expiration_time }]) => ({
+      variant_id,
+      added_time,
+      expiration_time
+    })
+  );
+
+  localStorage.setItem('cartTimerData', JSON.stringify(cartItemData));
+}
     }
   );
 }
