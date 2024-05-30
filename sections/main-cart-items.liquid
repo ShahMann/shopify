@@ -228,6 +228,43 @@
                           <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                             {{ 'products.product.quantity.label' | t }}
                           </label>
+<div id="cart-items">
+  <div class="cart-item" data-variant-id="12345">
+    <p>Product Name</p>
+    <p>Price</p>
+    <div class="countdown-timer" id="timer-12345"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function updateTimers() {
+    var cartData = JSON.parse(localStorage.getItem('cartTimerData'));
+    if (cartData) {
+      var now = new Date();
+      cartData.forEach(item => {
+        var variantId = item.variant_id;
+        var addedTime = new Date(item.added_time);
+        var diffTime = now - addedTime;
+        var remainingTime = 1 * 60 * 1000 - diffTime; 
+
+        if (remainingTime > 0) {
+          var minutes = Math.floor(remainingTime / (60 * 1000));
+          var seconds = Math.floor((remainingTime % (60 * 1000)) / 1000);
+          document.getElementById('timer-' + variantId).innerText = 
+            `Expires in: ${minutes}m ${seconds}s`;
+        } else {
+          document.getElementById('timer-' + variantId).innerText = 'Expired';
+        }
+      });
+    }
+  }
+
+  setInterval(updateTimers, 1000); 
+  updateTimers(); 
+});
+</script>
+
                           <div class="quantity-popover-container{% if has_qty_rules or has_vol_pricing %} quantity-popover-container--hover{% endif %}">
                             {%- if has_qty_rules or has_vol_pricing -%}
                               <button
