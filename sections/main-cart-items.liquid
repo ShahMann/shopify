@@ -470,9 +470,9 @@
 
       if (cartItemData) {
         var addedTime = new Date(cartItemData.added_time);
-        var expirationTime = new Date(addedTime.getTime() + 5 * 60000); // 5 minutes from added time
+        var expirationTime = new Date(addedTime.getTime() + 1 * 60000);
 
-        var countdownInterval = setInterval(function() {
+        function updateCountdown() {
           var now = new Date().getTime();
           var distance = expirationTime - now;
 
@@ -486,7 +486,10 @@
             timer.textContent = "Expired";
             removeCartData(variantId); // Call your existing removeCartData function here
           }
-        }, 1000);
+        }
+
+        var countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); 
       }
     });
   });
