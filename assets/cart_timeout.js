@@ -38,6 +38,3 @@ var intervalId = window.setInterval(function() {
     clearInterval(intervalId);
   }
 }, 5000);
-
--> Completed Cart Task with dynamic value i.e we can enter custom time for cart expiration 
--> Gone through diffrent files
