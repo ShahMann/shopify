@@ -11,9 +11,12 @@
     "name": "Cart Countdown",
     "settings": [
       {
-        "type": "number",
+        "type": "range",
         "id": "countdown_value",
-        "label": "Enter CountDown Value in Minutes"
+        "label": "Enter CountDown Value in Minutes",
+        "min": 0,
+        "max": 100,
+        "default": 1
       }
     ]
   },
