@@ -117,12 +117,11 @@ if (!customElements.get('product-form')) {
             }
 
             cartTimerData(response) {
-              document.addEventListener('DOMContentLoaded', function() {
-              var cartExpiryValue = window.cartexpiry.cartExpiry;
-
+                document.addEventListener('DOMContentLoaded', function() {
+                var cartExpiryValue = window.cartexpiry.cartExpiry;
                 var cartExpiryNumber = +cartExpiryValue;
                 var currentDateTime = new Date();
-                var expirationTime = new Date(currentDateTime.getTime() + 1 * 60 * 1000);
+                var expirationTime = new Date(currentDateTime.getTime() + cartExpiryNumber * 60 * 1000);
                 var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
 
                 cartTimerData.push({
