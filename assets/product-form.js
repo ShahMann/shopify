@@ -137,7 +137,7 @@ if (!customElements.get('product-form')) {
     cartItemData = cartTimerData;
 
     // Calculate the expiration time (5 minutes from the current time)
-    var expirationTime = new Date(currentDateTime.getTime() + 5 * 60000);
+    var expirationTime = new Date(currentDateTime.getTime() + 1 * 60000);
 
     cartItemData.push({
       variant_id: response['variant_id'],
