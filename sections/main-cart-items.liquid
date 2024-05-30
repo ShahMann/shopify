@@ -464,7 +464,7 @@
     countdownTimers.forEach(function(timer) {
       var variantId = timer.dataset.variantId;
       var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
-      console.log(cartTimerData);
+      console.log("The time expires in " + cartTimerData);
       var cartItemData = cartTimerData.find(function(item) {
         return item.variant_id === variantId;
       });
