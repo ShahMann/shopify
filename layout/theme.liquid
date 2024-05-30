@@ -354,7 +354,15 @@
       window.cartexpiry = {
         cartExpiry: `{{ settings.countdown_value }}`
       };
-      console.log(parseInt(window.cartexpiry,10))
+      document.addEventListener('DOMContentLoaded', function() {
+      var cartExpiryValue = window.cartexpiry.cartExpiry;
+
+      var cartExpiryNumber = +cartExpiryValue;
+
+      console.log(cartExpiryNumber); 
+  
+});
+
     </script>
 
     {%- if settings.predictive_search_enabled -%}
