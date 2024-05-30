@@ -228,41 +228,43 @@
                           <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                             {{ 'products.product.quantity.label' | t }}
                           </label>
-<div id="cart-items">
-  <div class="cart-item" data-variant-id="12345">
-    <div class="countdown-timer" id="timer-12345"></div>
-  </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  function updateTimers() {
-    var cartData = JSON.parse(localStorage.getItem('cartTimerData'));
-    if (cartData) {
-      var now = new Date();
-      cartData.forEach(item => {
-        var variantId = item.variant_id;
-        var addedTime = new Date(item.added_time);
-        var diffTime = now - addedTime;
-        var remainingTime = 1 * 60 * 1000 - diffTime; 
-
-        if (remainingTime > 0) {
-          var minutes = Math.floor(remainingTime / (60 * 1000));
-          var seconds = Math.floor((remainingTime % (60 * 1000)) / 1000);
-          document.getElementById('timer-' + variantId).innerText = 
-            `Expires in: ${minutes}m ${seconds}s`;
+                          <div id="countdown"></div>
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var countdownMinutes = {{ countdown_minutes | default: 0 }};
+        var countdownDuration = countdownMinutes * 60 * 1000; 
+        var endTime = localStorage.getItem('countdown_end_time_' + {{ product.id }});
+        var now = new Date().getTime();
+  
+        if (endTime && now < endTime) {
+          endTime = parseInt(endTime, 10);
         } else {
-          document.getElementById('timer-' + variantId).innerText = 'Expired';
+          endTime = now + countdownDuration;
+          localStorage.setItem('countdown_end_time_' + {{ product.id }}, endTime);
         }
+        
+        var countdownInterval = setInterval(function() {
+          now = new Date().getTime();
+          var countdown_begain = endTime - now;
+  
+          var days = Math.floor(countdown_begain / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((countdown_begain % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((countdown_begain % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((countdown_begain % (1000 * 60)) / 1000);
+  
+          document.getElementById("countdown").innerHTML =
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  
+          if (countdown_begain < 0) {
+            clearInterval(countdownInterval);
+            // document.getElementById("countdown").style.display = 'none';
+            document.getElementById("countdown").innerHTML = "Count Down is expired";
+            localStorage.removeItem('countdown_end_time_' + {{ product.id }}); 
+          }
+        }, 1000);
       });
-    }
-  }
-
-  setInterval(updateTimers, 1000); 
-  updateTimers(); 
-});
-</script>
-
+    </script>
                           <div class="quantity-popover-container{% if has_qty_rules or has_vol_pricing %} quantity-popover-container--hover{% endif %}">
                             {%- if has_qty_rules or has_vol_pricing -%}
                               <button
