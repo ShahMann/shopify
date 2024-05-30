@@ -117,15 +117,14 @@ if (!customElements.get('product-form')) {
 
       cartTimerData(response) {
   var currentDateTime = new Date();
-  var expirationTime = new Date(currentDateTime.getTime() + 1 * 60 * 1000); 
+  var expirationTime = new Date(currentDateTime.getTime() + window.countdownValue * 60 * 1000); // Set expiration time dynamically
   var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
-  
+
   cartTimerData.push({
-    variant_id: response.id, // Ensure you use the correct field for variant ID from response
+    variant_id: response.id,
     expiration_time: expirationTime
   });
 
-  // Remove duplicates and keep the latest expiration time
   const latestTimes = new Map();
   cartTimerData.forEach(item => {
     const { variant_id, expiration_time } = item;
