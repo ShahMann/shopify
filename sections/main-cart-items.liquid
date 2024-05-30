@@ -18,9 +18,7 @@
     }
   }
 {%- endstyle -%}
-<script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
-{% assign countdown_minutes = product.metafields.custom.count_down %}
-
+  <script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
 
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
@@ -36,6 +34,7 @@
         {{- 'general.continue_shopping' | t -}}
       </a>
     </div>
+
     <div class="cart__warnings">
       <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
       <a href="{{ routes.all_products_collection_url }}" class="button">
@@ -78,6 +77,7 @@
                   </th>
                 </tr>
               </thead>
+
               <tbody>
                 {%- for item in cart.items -%}
                   <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
@@ -97,6 +97,7 @@
                         </div>
                       {% endif %}
                     </td>
+
                     <td class="cart-item__details">
                       {%- if settings.show_vendor -%}
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
@@ -230,43 +231,6 @@
                           <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                             {{ 'products.product.quantity.label' | t }}
                           </label>
-                          <div id="countdown"></div>
-  
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        var countdownMinutes = {{ countdown_minutes | default: 0 }};
-        var countdownDuration = countdownMinutes * 60 * 1000; 
-        var endTime = localStorage.getItem('countdown_end_time_' + {{ product.id }});
-        var now = new Date().getTime();
-  
-        if (endTime && now < endTime) {
-          endTime = parseInt(endTime, 10);
-        } else {
-          endTime = now + countdownDuration;
-          localStorage.setItem('countdown_end_time_' + {{ product.id }}, endTime);
-        }
-        
-        var countdownInterval = setInterval(function() {
-          now = new Date().getTime();
-          var countdown_begain = endTime - now;
-  
-          var days = Math.floor(countdown_begain / (1000 * 60 * 60 * 24));
-          var hours = Math.floor((countdown_begain % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          var minutes = Math.floor((countdown_begain % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((countdown_begain % (1000 * 60)) / 1000);
-  
-          document.getElementById("countdown").innerHTML =
-            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-  
-          if (countdown_begain < 0) {
-            clearInterval(countdownInterval);
-            // document.getElementById("countdown").style.display = 'none';
-            document.getElementById("countdown").innerHTML = "Count Down is expired";
-            localStorage.removeItem('countdown_end_time_' + {{ product.id }}); 
-          }
-        }, 1000);
-      });
-    </script>
                           <div class="quantity-popover-container{% if has_qty_rules or has_vol_pricing %} quantity-popover-container--hover{% endif %}">
                             {%- if has_qty_rules or has_vol_pricing -%}
                               <button
