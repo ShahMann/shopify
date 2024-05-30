@@ -11,12 +11,9 @@
     "name": "Cart Expiry",
     "settings": [
       {
-        "type": "range",
+        "type": "number",
         "id": "countdown_value",
-        "label": "Enter CountDown Value in Minutes",
-        "min": 0,
-        "max": 100,
-        "default": 1
+        "label": "Enter CountDown Value in Minutes"
       }
     ]
   },
