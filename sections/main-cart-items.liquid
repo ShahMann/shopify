@@ -485,12 +485,12 @@
           if (distance < 0) {
             clearInterval(countdownInterval);
             timer.textContent = "Expired";
-            removeCartData(variantId); // Call your existing removeCartData function here
+            removeCartData(variantId); 
           }
         }
 
         var countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Update the countdown immediately
+        updateCountdown(); 
       }
     });
   });
