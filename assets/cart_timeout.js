@@ -38,3 +38,5 @@ var intervalId = window.setInterval(function() {
     clearInterval(intervalId);
   }
 }, 5000);
+
+-> Completed 
