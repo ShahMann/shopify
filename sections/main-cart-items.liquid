@@ -18,7 +18,9 @@
     }
   }
 {%- endstyle -%}
-  <script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
+{% assign countdown_minutes = product.metafields.custom.count_down %}
+
 
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
