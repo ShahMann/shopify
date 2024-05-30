@@ -120,8 +120,10 @@ if (!customElements.get('product-form')) {
                 document.addEventListener('DOMContentLoaded', function() {
                 var cartExpiryValue = window.cartexpiry.cartExpiry;
                 var cartExpiryNumber = +cartExpiryValue;
+                 console.log(`The expiry time from admin set is ${cartExpiryNumber}`);
                 var currentDateTime = new Date();
                 var expirationTime = new Date(currentDateTime.getTime() + cartExpiryNumber * 60 * 1000);
+                  console.log(`The expiry time ${expirationTime}`);
                 var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
 
                 cartTimerData.push({
