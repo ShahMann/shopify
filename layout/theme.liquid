@@ -352,8 +352,9 @@
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
       window.cartexpiry = {
-        cartExpiry: `{{ settings.countdown_value }}`
+        cartExpiry: {{ settings.countdown_value }}
       };
+      console.log("mann from theme")
     </script>
 
     {%- if settings.predictive_search_enabled -%}
