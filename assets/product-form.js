@@ -1,5 +1,4 @@
 if (!customElements.get('product-form')) {
-  
     customElements.define(
         'product-form',
         class ProductForm extends HTMLElement {
@@ -117,13 +116,8 @@ if (!customElements.get('product-form')) {
             }
 
             cartTimerData(response) {
-                document.addEventListener('DOMContentLoaded', function() {
-                var cartExpiryValue = window.cartexpiry.cartExpiry;
-                var cartExpiryNumber = +cartExpiryValue;
-                 console.log(`The expiry time from admin set is ${cartExpiryNumber}`);
                 var currentDateTime = new Date();
                 var expirationTime = new Date(currentDateTime.getTime() + 1 * 60 * 1000);
-                  console.log(`The expiry time ${expirationTime}`);
                 var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
 
                 cartTimerData.push({
@@ -142,8 +136,8 @@ if (!customElements.get('product-form')) {
                 cartTimerData = Array.from(latestTimes, ([variant_id, expiration_time]) => ({ variant_id, expiration_time }));
 
                 localStorage.setItem('cartTimerData', JSON.stringify(cartTimerData));
-              });
             }
+
         }
     );
 }
