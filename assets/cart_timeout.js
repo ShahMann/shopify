@@ -39,4 +39,4 @@ var intervalId = window.setInterval(function() {
   }
 }, 5000);
 
--> Completed 
+-> Completed Cart Task with dynamic value 
