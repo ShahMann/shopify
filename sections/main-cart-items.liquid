@@ -177,6 +177,7 @@
                             <dt class="visually-hidden">
                               {{ 'products.product.price.regular_price' | t }}
                             </dt>
+                            hello
                             <dd>
                               <s class="cart-item__old-price price price--end">
                                 {{ item.original_line_price | money }}
@@ -222,7 +223,6 @@
                         assign has_vol_pricing = true
                       endif
                     -%}
-                    Mann
                     <td class="cart-item__quantity{% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}">
                       <quantity-popover>
                         <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
