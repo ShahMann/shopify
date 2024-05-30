@@ -1,5 +1,5 @@
 function checkCartData() {
-  var localCartItemData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
+  var localCartItemData = JSON.parse(localStorage.getItem('cartExpiryTime')) || [];
 
   localCartItemData.forEach(item => {
     var expirationTime = new Date(item.expiration_time);
@@ -21,9 +21,9 @@ function removeCartData(variant_id) {
   })
   .then(response => response.json())
   .then(data => {
-    var cartData = JSON.parse(localStorage.getItem("cartTimerData")) || [];
+    var cartData = JSON.parse(localStorage.getItem("cartExpiryTime")) || [];
     const updatedData = cartData.filter(item => item.variant_id != variant_id);
-    localStorage.setItem("cartTimerData", JSON.stringify(updatedData));
+    localStorage.setItem("cartExpiryTime", JSON.stringify(updatedData));
     location.reload();
   })
   .catch((error) => {
@@ -32,7 +32,7 @@ function removeCartData(variant_id) {
 }
 
 var intervalId = window.setInterval(function() {
-  if (localStorage.getItem('cartTimerData')) {
+  if (localStorage.getItem('cartExpiryTime')) {
     checkCartData();
   } else {
     clearInterval(intervalId);
