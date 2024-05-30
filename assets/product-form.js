@@ -115,35 +115,30 @@ if (!customElements.get('product-form')) {
         }
       }
 
-      cartTimerData(response){
-        var currentDateTime = new Date();
-        var cartTimerData = [];
-        var cartItemData = [];
+      cartTimerData(response) {
+  var currentDateTime = new Date();
+  var expirationTime = new Date(currentDateTime.getTime() + 5 * 60 * 1000); // Set expiration time 5 minutes from now
+  var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
+  
+  cartTimerData.push({
+    variant_id: response.id, // Ensure you use the correct field for variant ID from response
+    expiration_time: expirationTime
+  });
 
-        cartTimerData = JSON.parse(localStorage.getItem('cartTimerData'));
+  // Remove duplicates and keep the latest expiration time
+  const latestTimes = new Map();
+  cartTimerData.forEach(item => {
+    const { variant_id, expiration_time } = item;
+    if (!latestTimes.has(variant_id) || new Date(expiration_time) > new Date(latestTimes.get(variant_id))) {
+      latestTimes.set(variant_id, expiration_time);
+    }
+  });
 
-        if (!cartTimerData) {
-          cartItemData = [
-            { variant_id: response['variant_id'], added_time: currentDateTime }
-          ];
-        } else {
-          cartItemData = cartTimerData;
-          cartItemData.push({ variant_id: response['variant_id'], added_time: currentDateTime });
-        }
+  cartTimerData = Array.from(latestTimes, ([variant_id, expiration_time]) => ({ variant_id, expiration_time }));
 
-        const latestTimes = new Map();
-        cartItemData.forEach(item => {
-            const { variant_id, added_time } = item;
-            if (!latestTimes.has(variant_id) || new Date(added_time) > new Date(latestTimes.get(variant_id))) {
-                latestTimes.set(variant_id, added_time);
-            }
-        });
-        cartItemData = (Array.from(
-          latestTimes, ([variant_id, added_time]) => ({ variant_id, added_time })
-        ));
+  localStorage.setItem('cartTimerData', JSON.stringify(cartTimerData));
+}
 
-        localStorage.setItem('cartTimerData', JSON.stringify(cartItemData));
-      }
     }
   );
 }
