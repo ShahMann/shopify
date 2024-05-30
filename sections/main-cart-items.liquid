@@ -76,7 +76,7 @@
                     {{ 'sections.cart.headings.total' | t }}
                   </th>
                   <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">
-                  Countdown
+                  Expires In
                   </th>
                 </tr>
               </thead>
@@ -457,7 +457,40 @@
     </form>
   </div>
 </cart-items>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var countdownTimers = document.querySelectorAll('.countdown-timer');
 
+    countdownTimers.forEach(function(timer) {
+      var variantId = timer.dataset.variantId;
+      var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
+      var cartItemData = cartTimerData.find(function(item) {
+        return item.variant_id === variantId;
+      });
+
+      if (cartItemData) {
+        var addedTime = new Date(cartItemData.added_time);
+        var expirationTime = new Date(addedTime.getTime() + 5 * 60000); // 5 minutes from added time
+
+        var countdownInterval = setInterval(function() {
+          var now = new Date().getTime();
+          var distance = expirationTime - now;
+
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          timer.textContent = minutes + "m " + seconds + "s";
+
+          if (distance < 0) {
+            clearInterval(countdownInterval);
+            timer.textContent = "Expired";
+            removeCartData(variantId); // Call your existing removeCartData function here
+          }
+        }, 1000);
+      }
+    });
+  });
+</script>
 {% schema %}
 {
   "name": "t:sections.main-cart-items.name",
