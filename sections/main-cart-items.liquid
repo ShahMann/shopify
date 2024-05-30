@@ -168,6 +168,7 @@
                         {%- endfor -%}
                       </ul>
                     </td>
+
                     <td class="cart-item__totals right medium-hide large-up-hide">
                       {%- render 'loading-spinner' -%}
                       <div class="cart-item__price-wrapper">
@@ -227,6 +228,7 @@
                           <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                             {{ 'products.product.quantity.label' | t }}
                           </label>
+                          Hello mann
                           <div class="quantity-popover-container{% if has_qty_rules or has_vol_pricing %} quantity-popover-container--hover{% endif %}">
                             {%- if has_qty_rules or has_vol_pricing -%}
                               <button
