@@ -1,4 +1,5 @@
 if (!customElements.get('product-form')) {
+  console.log("Hello mann from Product")
     customElements.define(
         'product-form',
         class ProductForm extends HTMLElement {
