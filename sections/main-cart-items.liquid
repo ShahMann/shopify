@@ -480,6 +480,12 @@
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
           timer.textContent = `${minutes}m ${seconds}s`;
+
+          if (distance < 0) {
+            clearInterval(countdownInterval);
+            timer.textContent = 'Expired';
+            removeCartData(variantId);
+          }
         }
 
         var countdownInterval = setInterval(updateCountdown, 1000);
