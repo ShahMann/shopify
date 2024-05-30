@@ -5,7 +5,7 @@ function checkCartData() {
     var localDateTime = localCartItemData[index]['added_time'];
     const date2 = new Date();
     const diffTime = Math.abs(date2 - new Date(localDateTime));
-    const remainingTime = 5 * 60 * 1000 - diffTime; // 5 minutes in milliseconds
+    const remainingTime = 0.5 * 60 * 1000 - diffTime; 
 
     if (remainingTime <= 0) {
       removeCartData(localCartItemData[index]['variant_id']);
