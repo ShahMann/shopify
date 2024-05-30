@@ -351,6 +351,9 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
+      window.cartexpiry = {
+        cartExpiry: `{{ settings.countdown_value }}`
+      }
     </script>
 
     {%- if settings.predictive_search_enabled -%}
