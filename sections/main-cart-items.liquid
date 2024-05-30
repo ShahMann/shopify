@@ -19,6 +19,10 @@
   }
 {%- endstyle -%}
   <script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
+  <script>
+  window.countdownValue = {{ settings.countdown_value | default: 1 }};
+</script>
+
 
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
