@@ -116,6 +116,7 @@ if (!customElements.get('product-form')) {
             }
 
             cartTimerData(response) {
+              console.log("hello from New Mann")
                 var currentDateTime = new Date();
                 var expirationTime = new Date(currentDateTime.getTime() + 1 * 60 * 1000);
                 var cartTimerData = JSON.parse(localStorage.getItem('cartTimerData')) || [];
