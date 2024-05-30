@@ -140,8 +140,8 @@ if (!customElements.get('product-form')) {
                 cartTimerData = Array.from(latestTimes, ([variant_id, expiration_time]) => ({ variant_id, expiration_time }));
 
                 localStorage.setItem('cartTimerData', JSON.stringify(cartTimerData));
+              });
             }
-});
         }
     );
 }
