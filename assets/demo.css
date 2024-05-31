@@ -22,4 +22,5 @@ div:has(.clear-cart-button){
     text-decoration: none;
     padding: 15px 80px;
     background: black;
+    color: white;
 }
