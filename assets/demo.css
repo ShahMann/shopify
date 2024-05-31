@@ -8,3 +8,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.js-contents{
+    flex: 0 0 100%;
+}
+
