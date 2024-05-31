@@ -76,6 +76,9 @@
                 </small>
               </div>
             {%- else -%}
+            <div>
+              <a href="/cart/clear" class="clear-cart-button">Clear Cart</a>
+            </div>
               <div class="cart__ctas" {{ block.shopify_attributes }}>
                 <button
                   type="submit"
