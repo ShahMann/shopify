@@ -1,7 +1,3 @@
-.clear-cart-button{
-    text-decoration: none;
-}
-
 .cart__blocks{
     display: flex;
     width: 100%;
@@ -18,4 +14,10 @@
     justify-content: flex-end;
 }
 
-div:has(.clear-cart-button)
+div:has(.clear-cart-button){
+    flex: 0 0 50%;
+}
+
+.clear-cart-button{
+    text-decoration: none;
+}
