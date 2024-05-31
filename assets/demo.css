@@ -15,5 +15,5 @@
 
 .cart__ctas{
     flex: 0 0 50%;
-    justify-content: ;
+    justify-content: flex-end;
 }
