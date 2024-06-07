@@ -438,12 +438,13 @@
                                 {%- endif -%}
                                 </div>
                                 </td>
+                                {% assign cart_total = item.final_line_price | money_without_currency %}
                                 FP {{ item.final_line_price | money_without_currency }}
-                                {% if free_shipping < item.final_line_price %}
+                                {% if free_shipping < cart_total %}
                                 <script>
                                 document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
-                              </script>
-                            {% endif %}
+                                </script>
+                              {% endif %}
                               Final price {{ item.final_line_price | money }}
                     <td class="cart-item__countdown small-hide right">
                       <span class="countdown-timer" data-variant-id="{{ item.variant.id }}"></span>
