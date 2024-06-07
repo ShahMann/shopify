@@ -439,7 +439,7 @@
                                 </div>
                                 </td>
                                 <script>
-                                  if (free_shipping < )
+                                  if (free_shipping <= item.final_line_price )
                                 document.getElementById("free-shipping").innerHTML = "Free Shipping";
                                 </script>
                               Final price {{ item.final_line_price | money }}
