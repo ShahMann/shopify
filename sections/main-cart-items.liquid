@@ -438,11 +438,11 @@
                                 {%- endif -%}
                                 </div>
                                 </td>
-                                <script>
                                 {% if free_shipping < item.final_line_price %}
+                                <script>
                                 document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
-                                {% endif %}
-                                </script>
+                              </script>
+                            {% endif %}
                               Final price {{ item.final_line_price | money }}
                     <td class="cart-item__countdown small-hide right">
                       <span class="countdown-timer" data-variant-id="{{ item.variant.id }}"></span>
