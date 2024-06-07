@@ -18,6 +18,16 @@
     ]
   },
   {
+    "name": "Free Shipping",
+    "settings": [
+      {
+        "type": "number",
+        "id": "free_shipping",
+        "label": "Enter Minimum Value to get free shipping"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {
