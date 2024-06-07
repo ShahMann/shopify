@@ -439,9 +439,9 @@
                                 </div>
                                 </td>
                                 <script>
-                                  {% if free_shipping < 74.85 %}
+                                {% if free_shipping < item.final_line_price %}
                                 document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
-                              {% endif %}
+                                {% endif %}
                                 </script>
                               Final price {{ item.final_line_price | money }}
                     <td class="cart-item__countdown small-hide right">
