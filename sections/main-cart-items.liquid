@@ -419,6 +419,8 @@
                             {{ item.original_line_price | money }}
                           </span>
                         {%- endif -%}
+                        Final price {{ item.final_line_price | money }}
+
 
                         {%- if item.variant.available and item.unit_price_measurement -%}
                           <div class="unit-price caption">
@@ -458,9 +460,8 @@
         {{ 'accessibility.loading' | t }}
       </p>
     </form>
-    </div>
-    </cart-items>   
-  Final price {{ item.final_line_price | money }}
+  </div>
+</cart-items>                         
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var countdownTimers = document.querySelectorAll('.countdown-timer');
