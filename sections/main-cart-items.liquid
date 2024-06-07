@@ -438,7 +438,7 @@
                                 {%- endif -%}
                                 </div>
                                 </td>
-                                FP {{ item.final_line_price  }}
+                                FP {{ item.final_line_price | money }}
                                 {% if free_shipping < item.final_line_price %}
                                 <script>
                                 document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
