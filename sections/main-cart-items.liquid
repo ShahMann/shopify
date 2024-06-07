@@ -458,8 +458,9 @@
         {{ 'accessibility.loading' | t }}
       </p>
     </form>
-  </div>
-</cart-items>                         
+    </div>
+    </cart-items>   
+  Final price {{ item.final_line_price | money }}
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var countdownTimers = document.querySelectorAll('.countdown-timer');
