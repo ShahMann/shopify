@@ -9,6 +9,7 @@
     color: red;
 }
 {%- endstyle -%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -23,6 +24,9 @@
   }
 {%- endstyle -%}
 <script src="{{ 'cart_timeout.js' | asset_url }}" defer="defer"></script>
+
+Final price {{ item.final_line_price | money }}
+
 
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
@@ -44,6 +48,7 @@
       <a href="{{ routes.all_products_collection_url }}" class="button">
         {{ 'general.continue_shopping' | t }}
       </a>
+
       {%- if shop.customer_accounts_enabled and customer == null -%}
         <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
         <p class="cart__login-paragraph">
