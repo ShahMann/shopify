@@ -18,6 +18,7 @@
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
   Hello {{ settings.countdown_value }}
+  Shipping {{ settings.free_shipping }}
   {% if product.metafields.custom.count_down and product.metafields.custom.count_down != 0 %}
     {% assign countdown_minutes = product.metafields.custom.count_down %}
     <div id="countdown"></div>
@@ -2316,31 +2317,6 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
-    },
-    {
-      "type": "header",
-      "content": "Media grouping"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_group_media",
-      "label": "Enable media grouping",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "media_grouping_option",
-      "label": "Media grouping option",
-      "default": "Color",
-      "info":"Group variant media together and attach the first image of each group to a variant."
-    },
-    {
-      "type": "paragraph",
-      "content": "Only one option name at a time, if you need a different option name for specific products please create a new product page template."
-    },
-    {
-      "type": "paragraph",
-      "content": "If you have a multilingual store, you can enter multiple values separated by commas: Color,Colour,Fabre,Couleur"
     }
   ]
 }
