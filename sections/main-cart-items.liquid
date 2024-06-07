@@ -29,6 +29,7 @@
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 
+{}
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
 <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
@@ -438,7 +439,7 @@
                                 </div>
                                 </td>
                                 <script>
-                                  
+
                                 document.getElementById("free-shipping").innerHTML = "Free Shipping";
                                 </script>
                               Final price {{ item.final_line_price | money }}
