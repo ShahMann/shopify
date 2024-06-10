@@ -438,7 +438,7 @@
                                 </div>
                                 </td>
                                 {% assign cart_total = item.final_line_price | money_without_currency %}
-                                {}
+                                {% assign free_shipping = settings.free_shipping %}
                                 FP {{ cart_total }}
                                 <script>
                                   var cart_total = {{ cart_total }}
