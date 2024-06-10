@@ -124,6 +124,7 @@ class CartItems extends HTMLElement {
         progressBar.style.display = 'none';
     }
     else {
+      freeshipppingdiv.style.display = 'block';
       let progressPercentage = (cartTotal / freeShipping) * 100;
       progressBar.style.width = progressPercentage + '%';
       progressBar.style.backgroundColor = "red";
