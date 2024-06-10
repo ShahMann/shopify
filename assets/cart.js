@@ -57,7 +57,7 @@ class CartItems extends HTMLElement {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify()
     })
     .then(response => {
       return response.json();
