@@ -265,7 +265,7 @@
                               <input
                                 class="quantity__input"
                                 data-quantity-variant-id="{{ item.variant.id }}"
-                                {{  }}
+                                {{ item.final_line_price | money_without_currency }}
                                 type="number"
                                 name="updates[]"
                                 value="{{ item.quantity }}"
