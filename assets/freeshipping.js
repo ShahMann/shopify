@@ -36,3 +36,4 @@ function freeShipping(parsedState) {
             errors.textContent = window.cartStrings.error;
         })
 }
+reeShipping(parsedState);
