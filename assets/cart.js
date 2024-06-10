@@ -144,6 +144,7 @@ class CartItems extends HTMLElement {
 
           let amountNeeded = (freeShippingThreshold - cartTotal).toFixed(2);
           progressText.innerHTML = `Spend Rs${amountNeeded} more to get free shipping!`;
+          
         }
 
         const quantityElement =
