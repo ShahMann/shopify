@@ -504,7 +504,8 @@
                 -%}
                 <button class="bundle">Add to Bundle</button>
                 <script>
-                  
+                  const bproduct = {{ product.title | escape }}
+                  console.log("Mann PDP", bproduct)
                 </script>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
