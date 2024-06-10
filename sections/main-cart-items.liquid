@@ -443,7 +443,7 @@
                                 {% comment %} {% if free_shipping < cart_total %} {% endcomment %}
                                 <script>
                                   var cart_total = {{ cart_total }}
-                                  console.log(cart_total);
+                                  console.log(typeof(cart_total));
                                 document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
                                 </script>
                               {% comment %} {% endif %} {% endcomment %}
