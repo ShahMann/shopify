@@ -502,9 +502,9 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-                <button class="bundle">Add to Bundle</button>
+                <button class="bundle" data-product-id="123" data-product-name="Product Name" data-product-price="99.99">Add to Bundle</button>
                 <script>
-                  
+
                 </script>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
