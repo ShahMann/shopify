@@ -51,7 +51,7 @@ class CartItems extends HTMLElement {
     );
     let freeshipping = +window.freeshipping.freeshipping
     console.log("Hello From Cart Js " + freeshipping);
-    console.log("Cart total is " + event.target.item_count);
+    console.log("Cart total is " + event.item_count);
   }
 
   onCartUpdate() {
