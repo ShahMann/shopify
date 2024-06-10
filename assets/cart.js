@@ -49,9 +49,6 @@ class CartItems extends HTMLElement {
       document.activeElement.getAttribute('name'),
       event.target.dataset.quantityVariantId
     );
-    let freeshipping = +window.freeshipping.freeshipping
-    console.log("Hello From Cart Js " + freeshipping);
-    console.log("Cart total is  ", data.total_price);
   }
 
   onCartUpdate() {
