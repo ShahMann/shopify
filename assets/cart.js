@@ -50,6 +50,7 @@ class CartItems extends HTMLElement {
       event.target.dataset.quantityVariantId
     );
     console.log("Hello From Cart Js " + typeof(+window.freeshipping.freeshipping));
+    console.log("")
   }
 
   onCartUpdate() {
