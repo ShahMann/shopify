@@ -506,7 +506,7 @@
                 <script>
                   var productData = {{ product | json }};
                   var productName = productData.title;
-                  console.log
+                  console.log("Product Name is ", productName)
                 </script>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
