@@ -520,7 +520,7 @@
                     if (!productExists) {
                       existingProducts.push(product);
                       localStorage.setItem('products', JSON.stringify(existingProducts));
-                      console.log('Product added to local storage:', product);
+                      showNotification('Product added to Handle');
                     } else {
                       console.log('Product already exists in local storage:', product);
                     }
@@ -534,7 +534,7 @@
 
                     addProductToLocalStorage(productDetails);
                   });
-                  
+
                   function showNotification(message) {
                     notification.textContent = message;
                     notification.style.display = 'block';
