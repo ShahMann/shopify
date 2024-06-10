@@ -503,25 +503,19 @@
                 -%}
                 <button id="addToBundleButton" class="bundle">Add to Bundle</button>
                 <script>
-                  // Assuming productData is being set server-side and passed to the client as shown
                   var productData = {{ product | json }};
 
-                  // Extract product details
                   var productName = productData.title;
                   var productPrice = productData.price;
 
-                  // Add an event listener to the button
                   document.getElementById('addToBundleButton').addEventListener('click', function() {
-                    // Create an object to store the product details
                     var productDetails = {
                       name: productName,
                       price: productPrice
                     };
 
-                    // Save the product details to local storage
                     localStorage.setItem('productData', JSON.stringify(productDetails));
 
-                    // Optionally, you can log a message to confirm the data has been saved
                     console.log('Product data saved to local storage:', productDetails);
                   });
                 </script>
