@@ -65,8 +65,6 @@ class CartItems extends HTMLElement {
               targetElement.replaceWith(sourceElement);
             }
           }
-          const parsedState = JSON.parse(html.getElementById('CartDrawerCartJSON').innerHTML);
-          this.updateFreeShippingProgress(parsedState);
         })
         .catch((e) => {
           console.error(e);
@@ -78,8 +76,6 @@ class CartItems extends HTMLElement {
           const html = new DOMParser().parseFromString(responseText, 'text/html');
           const sourceQty = html.querySelector('cart-items');
           this.innerHTML = sourceQty.innerHTML;
-          const parsedState = JSON.parse(html.getElementById('CartJSON').innerHTML);
-          this.updateFreeShippingProgress(parsedState);
         })
         .catch((e) => {
           console.error(e);
@@ -149,7 +145,7 @@ class CartItems extends HTMLElement {
       .then((state) => {
         const parsedState = JSON.parse(state);
 
-        this.updateFreeShippingProgress(parsedState);
+        this.updateFreeShippingProgress(parsedState); 
 
         const quantityElement =
           document.getElementById(`Quantity-${line}`) || document.getElementById(`Drawer-quantity-${line}`);
