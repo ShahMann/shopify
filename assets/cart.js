@@ -34,6 +34,16 @@ class CartItems extends HTMLElement {
       }
       this.onCartUpdate();
     });
+
+    fetchAndParseCartData()
+      .then((parsedState) => {
+        if (parsedState) {
+          this.updateFreeShippingProgress(parsedState);
+        }
+      })
+      .catch((error) => {
+        console.error('Error initializing free shipping progress:', error);
+      });
   }
 
   disconnectedCallback() {
@@ -162,7 +172,7 @@ class CartItems extends HTMLElement {
       .then((state) => {
         const parsedState = JSON.parse(state);
 
-        this.updateFreeShippingProgress(parsedState); 
+        this.updateFreeShippingProgress(parsedState);
 
         const quantityElement =
           document.getElementById(`Quantity-${line}`) || document.getElementById(`Drawer-quantity-${line}`);
