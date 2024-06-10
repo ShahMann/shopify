@@ -130,6 +130,7 @@ class CartItems extends HTMLElement {
         console.log("Hello From Cart Js " + typeof(freeshipping));
         console.log("Hello ", cart_total);
         console.log("Hello ", typeof(cart_total));
+        
         const quantityElement =
           document.getElementById(`Quantity-${line}`) || document.getElementById(`Drawer-quantity-${line}`);
         const items = document.querySelectorAll('.cart-item');
