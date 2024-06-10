@@ -131,16 +131,15 @@ class CartItems extends HTMLElement {
         let progress_text = document.getElementById("progress-text");
         let free_shipping_div = document.getElementById("free-shipping");
 
-        free_shipping_div.style.display = 'block'; // Ensure the div is visible
-
+        free_shipping_div.style.display = 'block'; 
         if (cart_total >= freeshipping) {
           progress_bar.style.width = '100%';
-          progress_text.innerHTML = "Yay Free Shipping!";
+          progress_text.innerHTML = "You are Eligible for Free Shipping!";
         } else {
           let progress_percentage = (cart_total / freeshipping) * 100;
           progress_bar.style.width = progress_percentage + '%';
           let amount_needed = (freeshipping - cart_total).toFixed(2);
-          progress_text.innerHTML = `Spend $${amount_needed} more to get free shipping!`;
+          progress_text.innerHTML = `Spend Rs${amount_needed} more to get free shipping!`;
         }
 
         const quantityElement =
