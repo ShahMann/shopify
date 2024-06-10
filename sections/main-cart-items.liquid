@@ -15,7 +15,7 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
-  #free-shipping{
+  #free-shipping {
   padding: 10px;
   background-color: #f4f4f4;
   text-align: center;
@@ -23,6 +23,26 @@
   font-size: 16px;
   font-weight: bold;
 }
+
+#progress-bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+#progress-bar {
+  height: 20px;
+  width: 0;
+  background-color: #76c7c0;
+  border-radius: 25px 0 0 25px;
+}
+
+#progress-text {
+  margin-top: 10px;
+}
+
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -52,7 +72,7 @@
         <div id="progress-bar"></div>
       </div>
       <div id="progress-text"></div>
-    </div>
+    </div>    
     
     <div class="cart__warnings">
       <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
