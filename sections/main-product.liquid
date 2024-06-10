@@ -505,8 +505,8 @@
                 -%}
                 <button id="addToBundleButton" class="bundle">Add to Bundle</button>
                 <script>
+                  var notification = document.getElementById('handle-notification');
                   var productData = {{ product | json }};
-
                   var productName = productData.title;
                   var productPrice = productData.price;
 
