@@ -124,6 +124,8 @@ class CartItems extends HTMLElement {
       })
       .then((state) => {
         const parsedState = JSON.parse(state);
+        let freeshipping = +window.freeshipping.freeshipping
+        console.log("Hello From Cart Js " + freeshipping);
         console.log("Hello ", parsedState.total_price);
         const quantityElement =
           document.getElementById(`Quantity-${line}`) || document.getElementById(`Drawer-quantity-${line}`);
