@@ -441,7 +441,7 @@
                                 FP {{ cart_total }}
                                 <script>
                                   var cart_total = {{ cart_total }}
-                                  var free_shipping = +window.freeshipping.freeshipping;
+                                  var free_shipping = window.freeshipping.freeshipping;
                                   if (cart_total > free_shipping) {
                                     document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
                                   }
