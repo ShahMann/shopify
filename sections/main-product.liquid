@@ -522,14 +522,14 @@
                       localStorage.setItem('products', JSON.stringify(existingProducts));
                       showNotification('Product added to Handle');
                     } else {
-                      showNotification('Product added to Handle', product);
+                      showNotification('Product already added to Handle', product);
                       console.log('Product already exists in local storage:', product);
                     }
                   }
 
                   document.getElementById('addToBundleButton').addEventListener('click', function() {
                     var productDetails = {
-                      name: productName,
+                      productDetail: productData,
                       price: productPrice
                     };
 
