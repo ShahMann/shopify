@@ -125,21 +125,25 @@ class CartItems extends HTMLElement {
       .then((state) => {
         const parsedState = JSON.parse(state);
 
-        let freeshipping = +window.freeshipping.freeshipping;
-        let cart_total = parsedState.total_price / 100;
-        let progress_bar = document.getElementById("progress-bar");
-        let progress_text = document.getElementById("progress-text");
-        let free_shipping_div = document.getElementById("free-shipping");
+        let freeShippingThreshold = +window.freeshipping.freeshipping;
+        let cartTotal = parsedState.total_price / 100;
+        let progressBar = document.getElementById("progress-bar");
+        let progressText = document.getElementById("progress-text");
+        let freeShippingDiv = document.getElementById("free-shipping");
 
-        free_shipping_div.style.display = 'block'; 
-        if (cart_total >= freeshipping) {
-          progress_bar.style.width = '100%';
-          progress_text.innerHTML = "You are Eligible for Free Shipping!";
+        freeShippingDiv.style.display = 'block';
+
+        if (cartTotal >= freeShippingThreshold) {
+          progressBar.style.width = '100%';
+          progressBar.style.backgroundColor = '#76c7c0';
+          progressText.innerHTML = "You are Eligible for Free Shipping!";
         } else {
-          let progress_percentage = (cart_total / freeshipping) * 100;
-          progress_bar.style.width = progress_percentage + '%';
-          let amount_needed = (freeshipping - cart_total).toFixed(2);
-          progress_text.innerHTML = `Spend Rs${amount_needed} more to get free shipping!`;
+          let progressPercentage = (cartTotal / freeShippingThreshold) * 100;
+          progressBar.style.width = progressPercentage + '%';
+          progressBar.style.backgroundColor = '#76c7c0';
+
+          let amountNeeded = (freeShippingThreshold - cartTotal).toFixed(2);
+          progressText.innerHTML = `Spend Rs${amountNeeded} more to get free shipping!`;
         }
 
         const quantityElement =
