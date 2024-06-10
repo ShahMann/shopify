@@ -50,8 +50,21 @@ class CartItems extends HTMLElement {
       event.target.dataset.quantityVariantId
     );
     let freeshipping = +window.freeshipping.freeshipping
-    console.log("Hello From Cart Js " + ());
-    console.log("Cart total is " + cart_total)
+    console.log("Hello From Cart Js " + freeshipping);
+    console.log("Cart total is " + cart_total);
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      return response.json();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }
 
   onCartUpdate() {
