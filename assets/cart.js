@@ -125,10 +125,10 @@ class CartItems extends HTMLElement {
       .then((state) => {
         const parsedState = JSON.parse(state);
         let freeshipping = +window.freeshipping.freeshipping
-        let cart_total = 
+        let cart_total = parsedState.total_price
         console.log("Hello From Cart Js " + freeshipping);
         console.log("Hello From Cart Js " + typeof(freeshipping));
-        console.log("Hello ", parsedState.total_price);
+        console.log("Hello ", cart_total);
         console.log("Hello ", typeof(parsedState.total_price));
         const quantityElement =
           document.getElementById(`Quantity-${line}`) || document.getElementById(`Drawer-quantity-${line}`);
