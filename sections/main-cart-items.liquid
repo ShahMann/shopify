@@ -265,10 +265,10 @@
                               <input
                                 class="quantity__input"
                                 data-quantity-variant-id="{{ item.variant.id }}"
-                                {{ item.final_line_price | money_without_currency }}
                                 type="number"
                                 name="updates[]"
                                 value="{{ item.quantity }}"
+                                cart{{ item.final_line_price | money_without_currency }}
                                 {% # theme-check-disable %}
                                 data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
                                 min="0"
