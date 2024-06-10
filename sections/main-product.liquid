@@ -506,10 +506,8 @@
                 <script>
                   function addToBundle(product) {
                     let bundle = JSON.parse(localStorage.getItem('bundle')) || [];
-                
                     bundle.push(product);
                     localStorage.setItem('bundle', JSON.stringify(bundle));
-                
                     console.log(`${product.title} added to the bundle.`);
                   }
                 </script>
