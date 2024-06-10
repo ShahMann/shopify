@@ -17,49 +17,48 @@
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
-  Hello {{ settings.countdown_value }}
-  Shipping {{ settings.free_shipping }}
+  Hello {{ settings.countdown_value }} Shipping {{ settings.free_shipping }}
   {% if product.metafields.custom.count_down and product.metafields.custom.count_down != 0 %}
     {% assign countdown_minutes = product.metafields.custom.count_down %}
     <div id="countdown"></div>
-  
+
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         var countdownMinutes = {{ countdown_minutes | default: 0 }};
-        var countdownDuration = countdownMinutes * 60 * 1000; 
+        var countdownDuration = countdownMinutes * 60 * 1000;
         var endTime = localStorage.getItem('countdown_end_time_' + {{ product.id }});
         var now = new Date().getTime();
-  
+
         if (endTime && now < endTime) {
           endTime = parseInt(endTime, 10);
         } else {
           endTime = now + countdownDuration;
           localStorage.setItem('countdown_end_time_' + {{ product.id }}, endTime);
         }
-        
+
         var countdownInterval = setInterval(function() {
           now = new Date().getTime();
           var countdown_begain = endTime - now;
-  
+
           var days = Math.floor(countdown_begain / (1000 * 60 * 60 * 24));
           var hours = Math.floor((countdown_begain % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
           var minutes = Math.floor((countdown_begain % (1000 * 60 * 60)) / (1000 * 60));
           var seconds = Math.floor((countdown_begain % (1000 * 60)) / 1000);
-  
+
           document.getElementById("countdown").innerHTML =
             days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-  
+
           if (countdown_begain < 0) {
             clearInterval(countdownInterval);
             // document.getElementById("countdown").style.display = 'none';
             document.getElementById("countdown").innerHTML = "Count Down is expired";
-            localStorage.removeItem('countdown_end_time_' + {{ product.id }}); 
+            localStorage.removeItem('countdown_end_time_' + {{ product.id }});
           }
         }, 1000);
       });
     </script>
   {% endif %}
-  
+
   {%- style -%}
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -502,14 +501,31 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-                <button class="bundle">Add to Bundle</button>
+                <button id="addToBundleButton" class="bundle">Add to Bundle</button>
                 <script>
+                  // Assuming productData is being set server-side and passed to the client as shown
                   var productData = {{ product | json }};
-                  console.log(productData)
+
+                  // Extract product details
                   var productName = productData.title;
                   var productPrice = productData.price;
-                  console.log("Product Name is ", productPrice)
+
+                  // Add an event listener to the button
+                  document.getElementById('addToBundleButton').addEventListener('click', function() {
+                    // Create an object to store the product details
+                    var productDetails = {
+                      name: productName,
+                      price: productPrice
+                    };
+
+                    // Save the product details to local storage
+                    localStorage.setItem('productData', JSON.stringify(productDetails));
+
+                    // Optionally, you can log a message to confirm the data has been saved
+                    console.log('Product data saved to local storage:', productDetails);
+                  });
                 </script>
+
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -610,9 +626,9 @@
                                   -%}
                                     <li>
                                       {%- if block.settings.enable_quick_add -%}
-                                        {% assign quick_add = "standard" %}
+                                        {% assign quick_add = 'standard' %}
                                       {%- else -%}
-                                        {% assign quick_add = "none" %}
+                                        {% assign quick_add = 'none' %}
                                       {%- endif -%}
                                       {% render 'card-product',
                                         card_product: product,
