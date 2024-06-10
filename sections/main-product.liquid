@@ -504,8 +504,8 @@
                 -%}
                 <button class="bundle">Add to Bundle</button>
                 <script>
+                  var productData = {{ product | json }};
                   const bproduct = 
-                  console.log("Mann PDP", bproduct)
                 </script>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
