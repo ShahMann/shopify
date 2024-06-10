@@ -128,7 +128,7 @@ class CartItems extends HTMLElement {
     }
   }
 
-   function fetchAndParseCartData() {
+  async fetchAndParseCartData() {
     try {
       const response = await fetch(`${routes.cart_url}?section_id=main-cart-items`);
       const responseText = await response.text();
