@@ -50,7 +50,6 @@ class CartItems extends HTMLElement {
       event.target.dataset.quantityVariantId
     );
     let freeshipping = +window.freeshipping.freeshipping
-    let data = JSON.parse(state);
     console.log("Hello From Cart Js " + freeshipping);
     console.log("Cart total is  ", data.total_price);
   }
