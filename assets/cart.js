@@ -124,7 +124,7 @@ class CartItems extends HTMLElement {
       })
       .then((state) => {
         const parsedState = JSON.parse(state);
-
+        function freeShipping()
         let freeShipping = +window.freeshipping.freeshipping;
         let cartTotal = parsedState.total_price / 100;
         let progressBar = document.getElementById("progress-bar");
