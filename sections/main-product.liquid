@@ -504,8 +504,7 @@
                 -%}
                 <button class="bundle">Add to Bundle</button>
                 <script>
-                  const bproduct = {{product.selected_or_first_available_variant.price
-                    | money_with_currency}}
+                  const bproduct = 
                   console.log("Mann PDP", bproduct)
                 </script>
               {%- when 'rating' -%}
