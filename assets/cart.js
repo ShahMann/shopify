@@ -18,6 +18,16 @@ class CartItems extends HTMLElement {
     this.lineItemStatusElement =
       document.getElementById('shopping-cart-line-item-status') || document.getElementById('CartDrawer-LineItemStatus');
     console.log("hello Frim");
+    fetchAndParseCartData()
+      .then((parsedState) => {
+        if (parsedState) {
+          this.updateFreeShippingProgress(parsedState);
+        }
+      })
+      .catch((error) => {
+        console.error('Error initializing free shipping progress:', error);
+      });
+  }
     const debouncedOnChange = debounce((event) => {
       this.onChange(event);
     }, ON_CHANGE_DEBOUNCE_TIMER);
@@ -34,17 +44,6 @@ class CartItems extends HTMLElement {
       }
       this.onCartUpdate();
     });
-
-    fetchAndParseCartData()
-      .then((parsedState) => {
-        if (parsedState) {
-          this.updateFreeShippingProgress(parsedState);
-        }
-      })
-      .catch((error) => {
-        console.error('Error initializing free shipping progress:', error);
-      });
-  }
 
   disconnectedCallback() {
     if (this.cartUpdateUnsubscriber) {
