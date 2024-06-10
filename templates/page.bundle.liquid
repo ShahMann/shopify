@@ -1,20 +1,17 @@
 <!-- HTML code in page.bundle.liquid -->
-<div id="productContainer"></div>
+<div id="productContainer">
+  {% for product in products %}
+    <div class="product">
+      <h3>{{ product.title }}</h3>
+      <p>Price: {{ product.price }}</p>
+      <img src="{{ product.featured_image.src }}" alt="{{ product.title }}">
+    </div>
+  {% endfor %}
+</div>
 
 <script>
   // Retrieve products from local storage
   var products = JSON.parse(localStorage.getItem('products')) || [];
 
-  // Get the container element
-  var container = document.getElementById('productContainer');
-
-  // Generate HTML for each product and append it to the container
-  products.forEach(function(product) {
-    var productHTML = '<div class="product">';
-    productHTML += '<h3>' + product.name + '</h3>';
-    productHTML += '<p>Price: ' + product.price + '</p>';
-    productHTML += '</div>';
-
-    container.innerHTML += productHTML;
-  });
+  // Fetch additional product information using AJAX or Liquid variables and render the products
 </script>
