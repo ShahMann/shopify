@@ -52,19 +52,6 @@ class CartItems extends HTMLElement {
     let freeshipping = +window.freeshipping.freeshipping
     console.log("Hello From Cart Js " + freeshipping);
     console.log("Cart total is " + cart_total);
-    fetch(window.Shopify.routes.root + 'cart.js', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify()
-    })
-    .then(response => {
-      return response.json();
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
   }
 
   onCartUpdate() {
