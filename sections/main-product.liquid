@@ -514,7 +514,7 @@
                     var existingProducts = JSON.parse(localStorage.getItem('products')) || [];
 
                     var productExists = existingProducts.some(function(existingProduct) {
-                      return existingProduct.name === product.name;
+                      return existingProduct.handle === product.handle;
                     });
 
                     if (!productExists) {
