@@ -129,9 +129,6 @@ class CartItems extends HTMLElement {
         let cartTotal = parsedState.total_price / 100;
         let progressBar = document.getElementById("progress-bar");
         let progressText = document.getElementById("progress-text");
-        let freeShippingDiv = document.getElementById("free-shipping");
-
-        // freeShippingDiv.style.display = 'block';
 
         if (cartTotal >= freeShipping) {
           progressBar.style.width = '100%';
