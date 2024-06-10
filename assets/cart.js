@@ -128,6 +128,23 @@ class CartItems extends HTMLElement {
     }
   }
 
+   function fetchAndParseCartData() {
+    try {
+      const response = await fetch(`${routes.cart_url}?section_id=main-cart-items`);
+      const responseText = await response.text();
+      const html = new DOMParser().parseFromString(responseText, 'text/html');
+      const cartJSON = html.getElementById('CartJSON');
+      if (cartJSON) {
+        const parsedState = JSON.parse(cartJSON.textContent);
+        return parsedState;
+      } else {
+        console.error('CartJSON element not found in the response');
+      }
+    } catch (error) {
+      console.error('Error fetching cart data:', error);
+    }
+  }
+
   updateQuantity(line, quantity, name, variantId) {
     this.enableLoading(line);
 
