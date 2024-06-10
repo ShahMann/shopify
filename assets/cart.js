@@ -126,10 +126,6 @@ class CartItems extends HTMLElement {
         const parsedState = JSON.parse(state);
         let freeshipping = +window.freeshipping.freeshipping;
         let cart_total = parsedState.total_price/100;
-        console.log("Hello From Cart Js " + freeshipping);
-        console.log("Hello From Cart Js " + typeof(freeshipping));
-        console.log("Hello ", cart_total);
-        console.log("Hello ", typeof(cart_total));
         if (cart_total > freeshipping) {
           document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
         }
