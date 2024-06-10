@@ -140,11 +140,11 @@ class CartItems extends HTMLElement {
         } else {
           let progressPercentage = (cartTotal / freeShippingThreshold) * 100;
           progressBar.style.width = progressPercentage + '%';
-          progressBar.style.backgroundColor = "blue";
+          // progressBar.style.backgroundColor = "blue";
 
           let amountNeeded = (freeShippingThreshold - cartTotal).toFixed(2);
           progressText.innerHTML = `Spend Rs${amountNeeded} more to get free shipping!`;
-          progressBar.style.width=`${amountNeeded}`;
+          // progressBar.style.width=`${amountNeeded}`;
         }
 
         const quantityElement =
