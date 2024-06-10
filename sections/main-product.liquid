@@ -502,23 +502,41 @@
                   show_pickup_availability: true
                 -%}
                 <button id="addToBundleButton" class="bundle">Add to Bundle</button>
-                <script>
-                  var productData = {{ product | json }};
+<script>
+  // Assuming productData is being set server-side and passed to the client as shown
+  var productData = {{ product | json }};
+  
+  // Extract product details
+  var productName = productData.title;
+  var productPrice = productData.price;
 
-                  var productName = productData.title;
-                  var productPrice = productData.price;
+  // Function to add product to local storage
+  function addProductToLocalStorage(product) {
+    // Get the existing products from local storage
+    var existingProducts = JSON.parse(localStorage.getItem('products')) || [];
+    
+    // Add the new product to the array
+    existingProducts.push(product);
+    
+    // Save the updated array back to local storage
+    localStorage.setItem('products', JSON.stringify(existingProducts));
+  }
 
-                  document.getElementById('addToBundleButton').addEventListener('click', function() {
-                    var productDetails = {
-                      name: productName,
-                      price: productPrice
-                    };
+  // Add an event listener to the button
+  document.getElementById('addToBundleButton').addEventListener('click', function() {
+    // Create an object to store the product details
+    var productDetails = {
+      name: productName,
+      price: productPrice
+    };
 
-                    localStorage.setItem('productData', JSON.stringify(productDetails));
+    // Add the product to local storage
+    addProductToLocalStorage(productDetails);
 
-                    console.log('Product data saved to local storage:', productDetails);
-                  });
-                </script>
+    // Optionally, you can log a message to confirm the data has been saved
+    console.log('Product added to local storage:', productDetails);
+  });
+</script>
 
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
