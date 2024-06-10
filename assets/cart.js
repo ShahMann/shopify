@@ -115,11 +115,12 @@ class CartItems extends HTMLElement {
     let freeshipppingdiv = document.getElementById("free-shipping");
 
     if (cartTotal >= freeShipping) {
+      freeshipppingdiv.style.display = 'block';
       progressBar.style.width = '100%';
       progressBar.style.backgroundColor = 'blue';
       progressText.innerHTML = "You are Eligible for Free Shipping!";
     } else if (cartTotal == 0){
-      freeshipppingdiv.style.display = 'none';
+        freeshipppingdiv.style.display = 'none';
         progressBar.style.display = 'none';
     }
     else {
