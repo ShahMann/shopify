@@ -268,7 +268,7 @@
                                 type="number"
                                 name="updates[]"
                                 value="{{ item.quantity }}"
-                                cart_total = "{{ item.final_line_price | money_without_currency }}"
+                                cart_total="{{ item.final_line_price | money_without_currency }}"
                                 {% # theme-check-disable %}
                                 data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
                                 min="0"
