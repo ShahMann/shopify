@@ -505,6 +505,7 @@
                 <button class="bundle">Add to Bundle</button>
                 <script>
                   var productData = {{ product | json }};
+                  console.log(productData)
                   var productName = productData.title;
                   console.log("Product Name is ", productName)
                 </script>
