@@ -509,7 +509,6 @@
                   var productData = {{ product | json }};
                   var productName = productData.title;
                   var productPrice = productData.price;
-                  console.log("Handle ", productData.handle);
                   function addProductToLocalStorage(product) {
                     var existingProducts = JSON.parse(localStorage.getItem('products')) || [];
 
