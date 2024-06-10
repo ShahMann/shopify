@@ -445,9 +445,10 @@
                                   var cart_total = {{ cart_total }}
                                   var free_shipping = {{ free_shipping }}
                                   if (cart_total > free_shipping) {
+                                    document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
+                                  }
                                   console.log("total " + typeof(cart_total));
                                   console.log("free " + typeof(free_shipping));
-                                document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
                                 </script>
                               {% comment %} {% endif %} {% endcomment %}
                               Final price {{ item.final_line_price | money }}
