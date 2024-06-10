@@ -502,37 +502,9 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-                <button class="bundle" data-product-id="123" data-product-name="Product Name" data-product-price="99.99">Add to Bundle</button>
+                <button class="bundle" onclick="addToBundle({{ product | json }})">Add to Bundle</button>
                 <script>
-                  document.addEventListener("DOMContentLoaded", function() {
-                    function addToBundle(event) {
-                        const button = event.target;
-                        
-                        const productId = button.getAttribute("data-product-id");
-                        const productName = button.getAttribute("data-product-name");
-                        const productPrice = button.getAttribute("data-product-price");
-                        
-                        const product = {
-                            id: productId,
-                            name: productName,
-                            price: productPrice
-                        };
-                
-                        let bundle = JSON.parse(localStorage.getItem("bundle")) || [];
-                
-                        bundle.push(product);
-                
-                        localStorage.setItem("bundle", JSON.stringify(bundle));
-                
-                        alert(productName + " has been added to your bundle!");
-                    }
-                
-                    const buttons = document.querySelectorAll(".bundle");
-                    buttons.forEach(function(button) {
-                        button.addEventListener("click", addToBundle);
-                    });
-                });
-                
+
                 </script>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
