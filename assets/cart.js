@@ -18,16 +18,6 @@ class CartItems extends HTMLElement {
     this.lineItemStatusElement =
       document.getElementById('shopping-cart-line-item-status') || document.getElementById('CartDrawer-LineItemStatus');
     console.log("hello Frim");
-    fetchAndParseCartData()
-      .then((parsedState) => {
-        if (parsedState) {
-          this.updateFreeShippingProgress(parsedState);
-        }
-      })
-      .catch((error) => {
-        console.error('Error initializing free shipping progress:', error);
-      });
-  }
     const debouncedOnChange = debounce((event) => {
       this.onChange(event);
     }, ON_CHANGE_DEBOUNCE_TIMER);
@@ -44,6 +34,7 @@ class CartItems extends HTMLElement {
       }
       this.onCartUpdate();
     });
+  }
 
   disconnectedCallback() {
     if (this.cartUpdateUnsubscriber) {
@@ -137,23 +128,6 @@ class CartItems extends HTMLElement {
     }
   }
 
-  async fetchAndParseCartData() {
-    try {
-      const response = await fetch(`${routes.cart_url}?section_id=main-cart-items`);
-      const responseText = await response.text();
-      const html = new DOMParser().parseFromString(responseText, 'text/html');
-      const cartJSON = html.getElementById('CartJSON');
-      if (cartJSON) {
-        const parsedState = JSON.parse(cartJSON.textContent);
-        return parsedState;
-      } else {
-        console.error('CartJSON element not found in the response');
-      }
-    } catch (error) {
-      console.error('Error fetching cart data:', error);
-    }
-  }
-
   updateQuantity(line, quantity, name, variantId) {
     this.enableLoading(line);
 
@@ -171,7 +145,7 @@ class CartItems extends HTMLElement {
       .then((state) => {
         const parsedState = JSON.parse(state);
 
-        this.updateFreeShippingProgress(parsedState);
+        this.updateFreeShippingProgress(parsedState); 
 
         const quantityElement =
           document.getElementById(`Quantity-${line}`) || document.getElementById(`Drawer-quantity-${line}`);
