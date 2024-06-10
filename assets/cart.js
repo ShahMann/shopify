@@ -135,7 +135,7 @@ class CartItems extends HTMLElement {
 
         if (cartTotal >= freeShippingThreshold) {
           progressBar.style.width = '100%';
-          progressBar.style.backgroundColor = '#76c7c0';
+          progressBar.style.backgroundColor = 'blue';
           progressText.innerHTML = "You are Eligible for Free Shipping!";
         } else {
           let progressPercentage = (cartTotal / freeShippingThreshold) * 100;
