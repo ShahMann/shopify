@@ -442,6 +442,7 @@
                                 FP {{ item.final_line_price | money_without_currency }}
                                 {% if free_shipping < cart_total %}
                                 <script>
+                                  
                                 document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
                                 </script>
                               {% endif %}
