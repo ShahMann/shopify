@@ -49,6 +49,7 @@ class CartItems extends HTMLElement {
       document.activeElement.getAttribute('name'),
       event.target.dataset.quantityVariantId
     );
+    console.log("Hello From Cart Js")
   }
 
   onCartUpdate() {
