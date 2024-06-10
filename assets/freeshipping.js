@@ -45,6 +45,9 @@ fetch(window.Shopify.routes.root + 'cart.js', {
   .then(response => {
     return response.json();
   })
+  .then((state) => {
+                const parsedState = JSON.parse(state);
+  })
   .catch((error) => {
     console.error('Error:', error);
   });
