@@ -143,7 +143,7 @@ class CartItems extends HTMLElement {
           progressBar.style.backgroundColor = "red";
 
           let amountNeeded = (freeShipping - cartTotal).toFixed(2);
-          progressText.innerHTML = `Spend Rs${amountNeeded} more to get free shipping!`;
+          progressText.innerHTML = `Spend Rs ${amountNeeded} more to get free shipping!`;
           progressBar.style.width=`${amountNeeded}`;
         }
 
