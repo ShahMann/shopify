@@ -507,8 +507,8 @@
                   var productData = {{ product | json }};
                   console.log(productData)
                   var productName = productData.title;
-                  var productPrice = productData.price
-                  console.log("Product Name is ", productName)
+                  var productPrice = productData.price;
+                  console.log("Product Name is ", productPrice)
                 </script>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
