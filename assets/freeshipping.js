@@ -1,4 +1,4 @@
-function freeShipping(parsedState) {
+function freeShipping() {
     fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
         .then((response) => {
             return response.text();
@@ -36,4 +36,4 @@ function freeShipping(parsedState) {
             errors.textContent = window.cartStrings.error;
         })
 }
-reeShipping(parsedState);
+freeShipping();
