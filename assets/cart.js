@@ -131,10 +131,10 @@ class CartItems extends HTMLElement {
         let free_shipping_div = document.getElementById("free-shipping");
 
         if (cart_total >= freeshipping) {
-          free_shipping_div.innerHTML = "Yay Free Shipping!";
+          free_shipping_div.innerHTML = "You are eligible for Free Shipping!";
           free_shipping_div.style.display = 'block';
         } else {
-          free_shipping_div.style.display = 'block'; // Ensure the div is visible
+          free_shipping_div.style.display = 'block'; 
           let progress_percentage = (cart_total / freeshipping) * 100;
           progress_bar.style.width = progress_percentage + '%';
           progress_text.innerHTML = `Spend $${(freeshipping - cart_total).toFixed(2)} more to get free shipping!`;
