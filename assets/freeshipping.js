@@ -40,8 +40,7 @@ function freeShipping() {
 freeShipping();
 
 fetch(window.Shopify.routes.root + 'cart.js', {
-    method: 'POST',
-    body: formData
+    method: 'GET'
   })
   .then(response => {
     return response.json();
