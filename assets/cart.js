@@ -52,7 +52,7 @@ class CartItems extends HTMLElement {
     let freeshipping = +window.freeshipping.freeshipping
     console.log("Hello From Cart Js " + freeshipping);
     console.log("Cart total is " + cart_total);
-    fetch(window.Shopify.routes.root + 'cart/add.js', {
+    fetch(window.Shopify.routes.root + 'cart.js', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
