@@ -5,6 +5,7 @@ function freeShipping() {
         })
         .then((state) => {
             const parsedState = JSON.parse(state);
+            console.log("Hello From Free JS", parsedState);
             let freeShipping = +window.freeshipping.freeshipping;
             let cartTotal = parsedState.total_price / 100;
             let progressBar = document.getElementById("progress-bar");
