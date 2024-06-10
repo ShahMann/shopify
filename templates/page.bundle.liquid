@@ -1,0 +1,20 @@
+<!-- HTML code in page.bundle.liquid -->
+<div id="productContainer"></div>
+
+<script>
+  // Retrieve products from local storage
+  var products = JSON.parse(localStorage.getItem('products')) || [];
+
+  // Get the container element
+  var container = document.getElementById('productContainer');
+
+  // Generate HTML for each product and append it to the container
+  products.forEach(function(product) {
+    var productHTML = '<div class="product">';
+    productHTML += '<h3>' + product.name + '</h3>';
+    productHTML += '<p>Price: ' + product.price + '</p>';
+    productHTML += '</div>';
+
+    container.innerHTML += productHTML;
+  });
+</script>
