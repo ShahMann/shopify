@@ -445,18 +445,6 @@
                                 {%- endif -%}
                                 </div>
                                 </td>
-                                {% assign cart_total = item.final_line_price | money_without_currency %}
-                                {% assign free_shipping = settings.free_shipping %}
-                                FP {{ cart_total }}
-                                <script>
-                                  var cart_total = {{ cart_total }}
-                                  var free_shipping = {{ free_shipping }}
-                                  if (cart_total > free_shipping) {
-                                    document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
-                                  }
-                                  console.log("total " + typeof(cart_total));
-                                  console.log("free " + typeof(free_shipping));
-                                </script>
                     <td class="cart-item__countdown small-hide right">
                       <span class="countdown-timer" data-variant-id="{{ item.variant.id }}"></span>
                     </td>
