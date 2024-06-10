@@ -119,6 +119,7 @@ class CartItems extends HTMLElement {
       progressText.innerHTML = "You are Eligible for Free Shipping!";
     } else if (cartTotal == 0){
         document.getElementById("free-shipping").style.display = 'none';
+        progressBar.style.display
     }
     else {
       let progressPercentage = (cartTotal / freeShipping) * 100;
