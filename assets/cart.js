@@ -137,7 +137,7 @@ class CartItems extends HTMLElement {
           free_shipping_div.style.display = 'block'; 
           let progress_percentage = (cart_total / freeshipping) * 100;
           progress_bar.style.width = progress_percentage + '%';
-          progress_text.innerHTML = `Spend $${(freeshipping - cart_total).toFixed(2)} more to get free shipping!`;
+          progress_text.innerHTML = `Add Rs${(freeshipping - cart_total).toFixed(2)} more to get free shipping!`;
         }
 
         const quantityElement =
