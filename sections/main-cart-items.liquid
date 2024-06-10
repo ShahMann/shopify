@@ -439,7 +439,7 @@
                                 </div>
                                 </td>
                                 {% assign cart_total = item.final_line_price | money_without_currency %}
-                                FP {{ item.final_line_price | money_without_currency }}
+                                FP {{ cart_total }}
                                 {% comment %} {% if free_shipping < cart_total %} {% endcomment %}
                                 <script>
                                   consol
