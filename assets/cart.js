@@ -134,7 +134,7 @@ class CartItems extends HTMLElement {
           document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
         }
         else{
-          document.getElementById("free-shipping").innerHTML = "Yay Free Shipping";
+          document.getElementById("free-shipping").style.display = "Yay Free Shipping";
 
         }
         const quantityElement =
