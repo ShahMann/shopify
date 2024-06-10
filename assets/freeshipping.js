@@ -38,3 +38,14 @@ function freeShipping() {
         })
 }
 freeShipping();
+
+fetch(window.Shopify.routes.root + 'cart.js', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
