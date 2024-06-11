@@ -178,7 +178,9 @@
                   role="status"
                 >
                  {% assign stock = 'products.product.inventory_in_stock_show_count' %} 
-                 <script></script>
+                 <script>
+                  console.log("Hello")
+                </script>
 
                   {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
                     {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
