@@ -4,14 +4,12 @@
     <div class="product">
       <h3>{{ products.title }}</h3>
       <p>Price: {{ products.price }}</p>
-      <img src="{{ products.featured_image.src }}" alt="{{ product.title }}">
     </div>
   {% endfor %}
 </div>
 
 <script>
-  // Retrieve products from local storage
   var products = JSON.parse(localStorage.getItem('products')) || [];
+  console.log(products);
 
-  // Fetch additional product information using AJAX or Liquid variables and render the products
 </script>
