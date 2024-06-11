@@ -122,6 +122,7 @@
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
           {%- for block in section.blocks -%}
+            {{block.settings.show_inventory_quantity }}
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
