@@ -177,9 +177,9 @@
                   id="Inventory-{{ section.id }}"
                   role="status"
                 >
-                 Stock  {{ 'products.product.inventory_in_stock_show_count' }}
-
+                  
                   {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
+                  Stock  {{ 'products.product.inventory_in_stock_show_count' }}
                     {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
                       {%- if product.selected_or_first_available_variant.inventory_quantity
                           <= block.settings.inventory_threshold
