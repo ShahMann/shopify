@@ -15,6 +15,14 @@
           "settings": {
           }
         },
+        "inventory_QjNF9q": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
         "price": {
           "type": "price",
           "settings": {
@@ -54,6 +62,7 @@
       "block_order": [
         "vendor",
         "title",
+        "inventory_QjNF9q",
         "price",
         "variant_picker",
         "quantity_selector",
@@ -74,9 +83,7 @@
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
-        "padding_bottom": 12,
-        "enable_group_media": true,
-        "media_grouping_option": "Color"
+        "padding_bottom": 12
       }
     },
     "related-products": {
