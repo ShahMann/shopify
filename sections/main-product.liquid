@@ -127,10 +127,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Function to get selected variant's inventory quantity
       function getSelectedVariantInventory() {
-        var inventoryInput = document.getElementById('inventory_quantity');
-        {% comment %} var selectedVariant = document.querySelector('#product-select option:checked'); {% endcomment %}
-        return selectedVariant ? selectedVariant.getAttribute('data-inventory') : inventoryInput.value;
+        var selectedVariant = document.querySelector('select[name="id"] option:checked');
+        return selectedVariant ? selectedVariant.getAttribute('data-inventory') : 0;
       }
     
       var quantityInput = document.querySelector('input[name="quantity"]');
@@ -147,7 +147,7 @@
         }
       });
     
-      var productSelect = document.getElementById('product-select');
+      var productSelect = document.querySelector('select[name="id"]');
       if (productSelect) {
         productSelect.addEventListener('change', function() {
           var selectedVariantInventory = getSelectedVariantInventory();
@@ -161,6 +161,7 @@
         });
       }
     });
+    
     
   </script>
 
