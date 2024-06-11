@@ -108,22 +108,16 @@
 
   {% if product.variants.size == 1 %}
     {% assign variant = product.variants.first %}
-    <p>Inventory: {{ variant.inventory_quantity }}</p>
-    <input type="hidden" id="inventory_quantity" value="{{ variant.inventory_quantity }}">
+    <p id="inventory-count" data-inventory="{{ variant.inventory_quantity }}">Inventory: {{ variant.inventory_quantity }}</p>
   {% else %}
     <p>Inventory:</p>
-    <ul>
+    <ul id="inventory-list">
       {% for variant in product.variants %}
-        <li>{{ variant.title }}: {{ variant.inventory_quantity }}</li>
+        <li data-variant-id="{{ variant.id }}" data-inventory="{{ variant.inventory_quantity }}">{{ variant.title }}: {{ variant.inventory_quantity }}</li>
       {% endfor %}
     </ul>
-    <input type="hidden" id="inventory_quantity" value="{{ product.variants.first.inventory_quantity }}">
-    {% comment %} <select id="product-select" name="id">
-      {% for variant in product.variants %}
-        <option value="{{ variant.id }}" data-inventory="{{ variant.inventory_quantity }}">{{ variant.title }}</option>
-      {% endfor %}
-    </select> {% endcomment %}
   {% endif %}
+  
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
