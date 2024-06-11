@@ -107,6 +107,9 @@
   {%- endif -%}
   {% if product.available %}
     <p>Inventory Count: {{ product.variants.first.inventory_quantity }}</p>
+    {% for variant in product.variants %}
+      <p>{{ variant.title }} - Inventory Count: {{ variant.inventory_quantity }}</p>
+    {% endfor %}
   {% else %}
     <p>This product is currently out of stock.</p>
   {% endif %}
