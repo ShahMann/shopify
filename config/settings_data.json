@@ -168,6 +168,12 @@
           "video_type": "youtube",
           "video_id": "zSBA_apjCf4?si=EpJ7MB-0eA2IzokF"
         }
+      },
+      "bundle-product": {
+        "type": "bundle-product",
+        "settings": {
+          "bundleproduct": "the-3p-fulfilled-snowboard"
+        }
       }
     },
     "content_for_index": [
