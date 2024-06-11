@@ -127,18 +127,15 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Function to get selected variant's inventory quantity
       function getSelectedVariantInventory() {
         var inventoryInput = document.getElementById('inventory_quantity');
         var selectedVariant = document.querySelector('#product-select option:checked');
         return selectedVariant ? selectedVariant.getAttribute('data-inventory') : inventoryInput.value;
       }
     
-      // Get the quantity input and add to cart button elements
       var quantityInput = document.querySelector('input[name="quantity"]');
       var addToCartButton = document.querySelector('form[action="/cart/add"] button[type="submit"]');
     
-      // Add event listener to quantity input
       quantityInput.addEventListener('input', function() {
         var selectedVariantInventory = getSelectedVariantInventory();
         if (parseInt(quantityInput.value) > parseInt(selectedVariantInventory)) {
@@ -150,7 +147,6 @@
         }
       });
     
-      // Add event listener to variant select if it exists
       var productSelect = document.getElementById('product-select');
       if (productSelect) {
         productSelect.addEventListener('change', function() {
