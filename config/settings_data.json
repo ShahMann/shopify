@@ -171,8 +171,32 @@
       },
       "bundle-product": {
         "type": "bundle-product",
+        "blocks": {
+          "product_D4T47n": {
+            "type": "product",
+            "settings": {
+              "product": "selling-plans-ski-wax"
+            }
+          },
+          "product_HYXxb6": {
+            "type": "product",
+            "settings": {
+              "product": "the-collection-snowboard-liquid"
+            }
+          },
+          "product_yBCkhG": {
+            "type": "product",
+            "settings": {
+              "product": "t-shirt"
+            }
+          }
+        },
+        "block_order": [
+          "product_D4T47n",
+          "product_HYXxb6",
+          "product_yBCkhG"
+        ],
         "settings": {
-          "bundleproduct": "the-3p-fulfilled-snowboard"
         }
       }
     },
