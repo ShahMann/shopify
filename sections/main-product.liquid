@@ -503,47 +503,6 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-                <button id="addToBundleButton" class="bundle">Add to Bundle</button>
-                <script>
-                  var notification = document.getElementById('handle-notification');
-                  var productData = {{ product | json }};
-                  var productName = productData.title;
-                  var productPrice = productData.price;
-                  var productHandle = productData.handle;
-                  function addProductToLocalStorage(product) {
-                    var existingProducts = JSON.parse(localStorage.getItem('products')) || [];
-
-                    var productExists = existingProducts.some(function(existingProduct) {
-                      return existingProduct.handle === product.handle;
-                    });
-
-                    if (!productExists) {
-                      existingProducts.push(product);
-                      localStorage.setItem('products', JSON.stringify(existingProducts));
-                      showNotification('Product added to Handle');
-                    } else {
-                      showNotification('Product already added to Handle', product);
-                      console.log('Product already exists in local storage:', product);
-                    }
-                  }
-
-                  document.getElementById('addToBundleButton').addEventListener('click', function() {
-                    var productDetails = {
-                      handle: productData,
-                    };
-
-                    addProductToLocalStorage(productDetails);
-                  });
-
-                  function showNotification(message) {
-                    notification.textContent = message;
-                    notification.style.display = 'block';
-                    setTimeout(() => {
-                        notification.style.display = 'none';
-                    }, 3000);
-                }
-                </script>
-
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
