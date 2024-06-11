@@ -108,24 +108,23 @@
 
   {% if product.variants.size == 1 %}
     {% assign variant = product.variants.first %}
-    {% if variant.inventory_management == 'shopify' %}
-      <p>Inventory: {{ variant.inventory_quantity }}</p>
-    {% else %}
-      <p>Inventory: Not tracked</p>
-    {% endif %}
+    <p>Inventory: {{ variant.inventory_quantity }}</p>
+    <input type="hidden" id="inventory_quantity" value="{{ variant.inventory_quantity }}">
   {% else %}
     <p>Inventory:</p>
     <ul>
       {% for variant in product.variants %}
-        {% if variant.inventory_management == 'shopify' %}
-          <li>{{ variant.title }}: {{ variant.inventory_quantity }}</li>
-        {% else %}
-          <li>{{ variant.title }}: Not tracked</li>
-        {% endif %}
+        <li>{{ variant.title }}: {{ variant.inventory_quantity }}</li>
       {% endfor %}
     </ul>
+    <input type="hidden" id="inventory_quantity" value="{{ product.variants.first.inventory_quantity }}">
+    <select id="product-select" name="id">
+      {% for variant in product.variants %}
+        <option value="{{ variant.id }}" data-inventory="{{ variant.inventory_quantity }}">{{ variant.title }}</option>
+      {% endfor %}
+    </select>
   {% endif %}
-
+  
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
