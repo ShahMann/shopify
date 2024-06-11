@@ -105,14 +105,28 @@
       onload="this.media='all'"
     >
   {%- endif -%}
-  {% if product.available %}
-    <p>Inventory Count: {{ product.variants.first.inventory_quantity }}</p>
-    {% for variant in product.variants %}
-      <p>{{ variant.title }} - Inventory Count: {{ variant.inventory_quantity }}</p>
-    {% endfor %}
+
+  {% if product.variants.size == 1 %}
+    {% assign variant = product.variants.first %}
+    {% if variant.inventory_management == 'shopify' %}
+      <p>Inventory: {{ variant.inventory_quantity }}</p>
+    {% else %}
+      <p>Inventory: Not tracked</p>
+    {% endif %}
   {% else %}
-    <p>This product is currently out of stock.</p>
+    <p>Inventory:</p>
+    <ul>
+      {% for variant in product.variants %}
+        {% if variant.inventory_management == 'shopify' %}
+          <li>{{ variant.title }}: {{ variant.inventory_quantity }}</li>
+        {% else %}
+          <li>{{ variant.title }}: Not tracked</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
   {% endif %}
+
+
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
