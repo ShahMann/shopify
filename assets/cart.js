@@ -33,6 +33,12 @@ class CartItems extends HTMLElement {
       }
       this.onCartUpdate();
     });
+    fetch(`${routes.cart_url}.js`)
+    .then(response => response.json())
+    .then(cartState => {
+      this.updateFreeShippingProgress(cartState);
+    })
+    .catch(e => console.error(e)); 
   }
 
   disconnectedCallback() {
