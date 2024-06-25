@@ -119,12 +119,14 @@ class CartItems extends HTMLElement {
     let progressBar = document.getElementById("progress-bar");
     let progressText = document.getElementById("progress-text");
     let freeshipppingdiv = document.getElementById("free-shipping");
+    let coupounName = "Free Shipping"
 
     if (cartTotal >= freeShipping) {
       freeshipppingdiv.style.display = 'block';
       progressBar.style.width = '100%';
       progressBar.style.backgroundColor = 'blue';
-      progressText.innerHTML = "You are Eligible for Free Shipping! Coupoun Applied";
+      // progressText.innerHTML = "You are Eligible for Free Shipping! Coupoun Applied";
+      progressText.innerHTML = `You are Eligible for Free Shipping! Coupoun Applied ${coupounName}`;
     } else if (cartTotal == 0){
         freeshipppingdiv.style.display = 'none';
         progressBar.style.display = 'none';
