@@ -124,7 +124,7 @@ class CartItems extends HTMLElement {
       freeshipppingdiv.style.display = 'block';
       progressBar.style.width = '100%';
       progressBar.style.backgroundColor = 'blue';
-      progressText.innerHTML = "You are Eligible for Free Shipping! Coupoun Applied "Free Shipping""";
+      progressText.innerHTML = "You are Eligible for Free Shipping! Coupoun Applied "Free Shipping"";
     } else if (cartTotal == 0){
         freeshipppingdiv.style.display = 'none';
         progressBar.style.display = 'none';
