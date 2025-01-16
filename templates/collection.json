@@ -41,7 +41,11 @@
       "type": "collection-faq",
       "settings": {
         "faq_title": "Frequently Asked Questions",
-        "faq_metaobject": "faq-6vsbjo1x"
+        "faq_metaobject": [
+          "faq-6vsbjo1x",
+          "faq-3baodhjt",
+          "faq-dzl4hlfx"
+        ]
       }
     }
   },
