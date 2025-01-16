@@ -46,18 +46,10 @@
             "question": "{{ collection.metafields.custom.faq_test | metafield_text: field: 'question' }}",
             "answer": "{{ collection.metafields.custom.faq_test | metafield_text: field: 'answer' }}"
           }
-        },
-        "faq_7qpMcN": {
-          "type": "faq",
-          "settings": {
-            "question": "{{ collection.metafields.custom.faq_test | metafield_text: field: 'answer' }}",
-            "answer": ""
-          }
         }
       },
       "block_order": [
-        "faq_QHqUTf",
-        "faq_7qpMcN"
+        "faq_QHqUTf"
       ],
       "settings": {
         "faq_title": "Frequently Asked Questions"
