@@ -36,10 +36,29 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "collection_faq_xbfQaD": {
+      "type": "collection-faq",
+      "blocks": {
+        "faq_B4NdCj": {
+          "type": "faq",
+          "settings": {
+            "question": "{{ collection.metafields.custom.faq_test | metafield_text: field: 'question' }}",
+            "answer": "{{ collection.metafields.custom.faq_test | metafield_text: field: 'answer' }}"
+          }
+        }
+      },
+      "block_order": [
+        "faq_B4NdCj"
+      ],
+      "settings": {
+        "faq_title": "Frequently Asked Questions"
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "collection_faq_xbfQaD"
   ]
 }
