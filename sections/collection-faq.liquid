@@ -1,16 +1,16 @@
 <div class="faq-section">
-  {% if section.blocks.size > 0 %}
+  {% if collection.metafields.custom.faq != blank %}
     <h2>{{ section.settings.faq_title }}</h2>
     <div class="faq-items">
-      {% for block in section.blocks %}
+      {% for faq_item in collection.metafields.custom.faq.value %}
         <details class="faq-item">
-          <summary class="faq-question"><strong>{{ block.settings.question }}</strong></summary>
-          <p class="faq-answer">{{ block.settings.answer }}</p>
+          <summary class="faq-question"><strong>{{ faq_item.question }}</strong></summary>
+          <p class="faq-answer">{{ faq_item.answer }}</p>
         </details>
       {% endfor %}
     </div>
   {% else %}
-    <p>No FAQs available.</p>
+    <p>No FAQs available for this collection.</p>
   {% endif %}
 </div>
 
@@ -28,24 +28,6 @@
       "default": "Frequently Asked Questions"
     }
   ],
-  "blocks": [
-    {
-      "type": "faq",
-      "name": "FAQ Item",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Question"
-        },
-        {
-          "type": "text",
-          "id": "answer",
-          "label": "Answer"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
       "name": "Collection FAQ"
@@ -53,28 +35,3 @@
   ]
 }
 {% endschema %}
-<style>
-  .faq-section {
-  margin: 20px 0;
-}
-
-.faq-question {
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.faq-answer {
-  padding: 10px 0;
-  font-size: 14px;
-  color: #555;
-}
-
-details {
-  margin-bottom: 10px;
-}
-
-details[open] .faq-question {
-  color: #007acc; /* Highlight color when open */
-}
-
-</style>
