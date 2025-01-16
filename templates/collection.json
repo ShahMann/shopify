@@ -41,8 +41,9 @@
       "type": "collection-faq",
       "settings": {
         "faq_title": "Frequently Asked Questions",
-        "faq_question": "{{ collection.metafields.custom.faq_test | metafield_tag: field: 'question' }}",
-        "faq_answer": "{{ collection.metafields.custom.faq_test | metafield_tag: field: 'answer' }}"
+        "faq_question": "<p>{{ collection.metafields.custom.faq_test | metafield_tag: field: 'question' }}</p>",
+        "faq_answer": "<p>{{ collection.metafields.custom.faq_test | metafield_tag: field: 'answer' }}</p>",
+        "faq_q1": "{{ collection.metafields.custom.faq_test.value }}"
       }
     }
   },
