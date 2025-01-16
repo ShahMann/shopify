@@ -1,6 +1,6 @@
 {% if section.settings.faq_question != blank and section.settings.faq_answer != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
-  {% assign faq = section.settings.faq_q1.vlue %}
+  {% assign faq = section.settings.faq_q1.value %}
   {{ faq | json }}
   {% for collection in faq.value %}
     {{ collection.question.value }}
