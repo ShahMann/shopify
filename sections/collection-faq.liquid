@@ -2,7 +2,7 @@
   {% if collection.metafields.custom.faq != blank %}
     <h2>{{ section.settings.faq_title }}</h2>
     <div class="faq-items">
-        {{ collection.metafields.custom.faq | json }}
+        {{ collection.metafields.custom.faq }}
       {% for faq_item in collection.metafields.custom.faq.value %}
         <details class="faq-item">
           <summary class="faq-question"><strong>{{ faq_item.question.value }}</strong></summary>
