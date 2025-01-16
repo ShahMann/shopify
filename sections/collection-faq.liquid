@@ -1,7 +1,6 @@
 {% if section.settings.faq != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
-  {{ section.settings.faq_question }}
-  {{ section.settings.faq_answer }}
+  {{ section.settings.faq }}
   
 {% endif %}
 {% schema %}
@@ -19,12 +18,7 @@
     },
     {
       "type": "richtext",
-      "id": "faq_question",
-      "label": "Select Faq"
-    },
-    {
-      "type": "richtext",
-      "id": "faq_answer",
+      "id": "faq",
       "label": "Select Faq"
     }
   ],
