@@ -2,6 +2,7 @@
   <h2>{{ section.settings.faq_title }}</h2>
   <div class="faq-container">
     {% assign faqs = collection.metafields.faq.questions %}
+    {{ faqs | json }}
     
     {% if faqs != blank %}
       {% for faq in faqs %}
