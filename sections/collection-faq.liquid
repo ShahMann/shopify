@@ -2,7 +2,7 @@
   <h2>{{ section.settings.faq_title }}</h2>
   {% assign faq = section.settings.faq_q1 %}
   {{ faq | json }}
-  {% for collection in faq.value %}
+  {% for collection in faq %}
     {{ collection.question.value }}
 {% endfor %}  
 {% endif %}
