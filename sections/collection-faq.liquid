@@ -2,8 +2,9 @@
   <h2>{{ section.settings.faq_title }}</h2>
   <!-- {{ section.settings.faq_question }}
   {{ section.settings.faq_answer }} -->
-  {{ section.settings.faq_q1 }}
-  
+  {% for collection in section.settings.faq_q1 %}
+    {{ collection }}
+{% endfor %}  
 {% endif %}
 {% schema %}
 {
