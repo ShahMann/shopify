@@ -3,10 +3,10 @@
     <h2>{{ section.settings.faq_title }}</h2>
     <div class="faq-items">
       {% for block in section.blocks %}
-        <div class="faq-item">
-          <p class="faq-question"><strong>{{ block.settings.question }}</strong></p>
+        <details class="faq-item">
+          <summary class="faq-question"><strong>{{ block.settings.question }}</strong></summary>
           <p class="faq-answer">{{ block.settings.answer }}</p>
-        </div>
+        </details>
       {% endfor %}
     </div>
   {% else %}
@@ -18,7 +18,7 @@
 {
   "name": "Collection FAQ",
   "enabled_on": {
-    "templates": ["collection", "list-collections"]
+    "templates": ["collection"]
   },
   "settings": [
     {
@@ -48,8 +48,33 @@
   ],
   "presets": [
     {
-      "name": "Collection FAQ",
+      "name": "Collection FAQ"
     }
   ]
 }
 {% endschema %}
+<style>
+  .faq-section {
+  margin: 20px 0;
+}
+
+.faq-question {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.faq-answer {
+  padding: 10px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+details {
+  margin-bottom: 10px;
+}
+
+details[open] .faq-question {
+  color: #007acc; /* Highlight color when open */
+}
+
+</style>
