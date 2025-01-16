@@ -3,7 +3,7 @@
   {% assign faq = section.settings.faq_q1 %}
   {{ faq | json }}
   {% for collection in faq %}
-    {{ collection.question.value }}
+    Q :- {{ collection.question.value }}
 {% endfor %}  
 {% endif %}
 {% schema %}
