@@ -1,14 +1,14 @@
 {% if section.settings.faq_metaobject != blank %}
   {% assign faq_items = section.settings.faq_metaobject.entries %}
   <div class="faq-section">
-    <h2>{{ section.settings.faq_title }}</h2>
+    <h2>{{ section.settings.faq_title | escape }}</h2>
     {% for faq in faq_items %}
       <div class="faq-item">
-        <button class="faq-question" type="button" onclick="toggleFaq(this)">
-          {{ faq.fields.question.value }}
+        <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
+          {{ faq.fields.question.value | escape }}
         </button>
-        <div class="faq-answer" style="display: none;">
-          {{ faq.fields.answer.value }}
+        <div class="faq-answer" style="display: none;" aria-hidden="true">
+          {{ faq.fields.answer.value | escape }}
         </div>
       </div>
     {% endfor %}
@@ -21,8 +21,8 @@
 {
   "name": "Collection FAQ",
   "enabled_on": {
-    "templates": ["collection","list-collections"]
-    },
+    "templates": ["collection", "list-collections"]
+  },
   "settings": [
     {
       "type": "text",
