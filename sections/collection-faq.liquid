@@ -1,7 +1,7 @@
 {% if section.settings.faq_title != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
   <div class="faq-container">
-    {% assign faqs = collection.metafields.faq_test %}
+    {% assign faqs = collection.metafields.faq_test.value %}
     {{ faqs | json }}
     
     {% if faqs != blank %}
