@@ -1,12 +1,7 @@
 {% if section.settings.faq_question != blank and section.settings.faq_answer != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
-  {% for question in section.settings.faq_question %}
-    {{ question }}
-    {% for answer in section.settings.faq_answer %}
-      {{ answer }}
-      {% endfor %}
-    
-  {% endfor %}
+  {{ section.settings.faq_question }}
+  {{ section.settings.faq_answer }}
   
 {% endif %}
 {% schema %}
