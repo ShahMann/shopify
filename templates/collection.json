@@ -39,20 +39,10 @@
     },
     "collection_faq_xbfQaD": {
       "type": "collection-faq",
-      "blocks": {
-        "faq_B4NdCj": {
-          "type": "faq",
-          "settings": {
-            "question": "{{ collection.metafields.custom.faq_test | metafield_text: field: 'question' }}",
-            "answer": "{{ collection.metafields.custom.faq_test | metafield_text: field: 'answer' }}"
-          }
-        }
-      },
-      "block_order": [
-        "faq_B4NdCj"
-      ],
       "settings": {
-        "faq_title": "Frequently Asked Questions"
+        "faq_title": "Frequently Asked Questions",
+        "faq_question": "{{ collection.metafields.custom.faq_test | metafield_tag: field: 'question' }}",
+        "faq_answer": "{{ collection.metafields.custom.faq_test | metafield_tag: field: 'answer' }}"
       }
     }
   },
