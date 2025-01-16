@@ -1,22 +1,8 @@
-<div class="faq-section">
-  {% if section.blocks.size > 0 %}
-    <h2>{{ section.settings.faq_title }}</h2>
-    <div class="faq-items">
-      {% for block in section.blocks %}
-        <div class="faq-item">
-          {% for question in block.settings.question %}
-            {{ question |json }}
-          <p class="faq-question"><strong>{{ question }}</strong></p>
-            {% endfor %}
-          <p class="faq-answer">{{ block.settings.answer }}</p>
-        </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p>No FAQs available.</p>
-  {% endif %}
-</div>
-
+{% if section.settings.faq != blank %}
+  <h2>{{ section.settings.faq_title }}</h2>
+  {{ section.settings.faq }}
+  
+{% endif %}
 {% schema %}
 {
   "name": "Collection FAQ",
@@ -27,31 +13,18 @@
     {
       "type": "text",
       "id": "faq_title",
-      "label": "Collection FAQ Section Title",
+      "label": "Collection FAQ Section",
       "default": "Frequently Asked Questions"
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "faq",
-      "name": "FAQ Item",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Question"
-        },
-        {
-          "type": "text",
-          "id": "answer",
-          "label": "Answer"
-        }
-      ]
+      "type": "richtext",
+      "id": "faq",
+      "label": "Select Faq"
     }
   ],
   "presets": [
     {
-      "name": "Collection FAQ",
+      "name": "Collection FAQ"
     }
   ]
 }
