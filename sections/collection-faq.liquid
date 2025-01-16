@@ -1,9 +1,21 @@
-{% if section.settings.faq_question != blank and section.settings.faq_answer != blank %}
+{% if section.settings.faq_title != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
-  {{ section.settings.faq_question }}
-  {{ section.settings.faq_answer }}
-  
+  <div class="faq-container">
+    {% assign faqs = collection.metafields.faq.questions %}
+    
+    {% if faqs != blank %}
+      {% for faq in faqs %}
+        <div class="faq-item">
+          <h3>{{ faq.question }}</h3>
+          <p>{{ faq.answer }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No FAQs available for this collection.</p>
+    {% endif %}
+  </div>
 {% endif %}
+
 {% schema %}
 {
   "name": "Collection FAQ",
