@@ -4,7 +4,9 @@
     <div class="faq-items">
       {% for block in section.blocks %}
         <div class="faq-item">
-          <p class="faq-question"><strong>{{ block.settings.question }}</strong></p>
+          {% for question in block.settings.question %}
+          <p class="faq-question"><strong>{{ question }}</strong></p>
+            {% endfor %}
           <p class="faq-answer">{{ block.settings.answer }}</p>
         </div>
       {% endfor %}
