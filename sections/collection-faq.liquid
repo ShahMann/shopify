@@ -1,17 +1,16 @@
 <div class="faq-section">
-  {% if collection.metafields.custom.faq != blank %}
+  {% if section.blocks.size > 0 %}
     <h2>{{ section.settings.faq_title }}</h2>
     <div class="faq-items">
-        {{ collection.metafields.custom.faq }}
-      {% for faq_item in collection.metafields.custom.faq.value %}
-        <details class="faq-item">
-          <summary class="faq-question"><strong>{{ faq_item.question.value }}</strong></summary>
-          <p class="faq-answer">{{ faq_item.answer }}</p>
-        </details>
+      {% for block in section.blocks %}
+        <div class="faq-item">
+          <p class="faq-question"><strong>{{ block.settings.question }}</strong></p>
+          <p class="faq-answer">{{ block.settings.answer }}</p>
+        </div>
       {% endfor %}
     </div>
   {% else %}
-    <p>No FAQs available for this collection.</p>
+    <p>No FAQs available.</p>
   {% endif %}
 </div>
 
@@ -19,7 +18,7 @@
 {
   "name": "Collection FAQ",
   "enabled_on": {
-    "templates": ["collection"]
+    "templates": ["collection", "list-collections"]
   },
   "settings": [
     {
@@ -29,9 +28,27 @@
       "default": "Frequently Asked Questions"
     }
   ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "text",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Collection FAQ"
+      "name": "Collection FAQ",
     }
   ]
 }
