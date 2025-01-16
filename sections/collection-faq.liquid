@@ -4,6 +4,7 @@
   {{ faq | json }}
   {% for collection in faq %}
     Q :- {{ collection.question.value }}
+    A :- {{ collection.answer.value }}
 {% endfor %}  
 {% endif %}
 {% schema %}
