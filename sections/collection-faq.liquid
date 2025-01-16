@@ -4,7 +4,7 @@
     <div class="faq-items">
       {% for faq_item in collection.metafields.custom.faq.value %}
         <details class="faq-item">
-          <summary class="faq-question"><strong>{{ faq_item.question }}</strong></summary>
+          <summary class="faq-question"><strong>{{ faq_item.question.value }}</strong></summary>
           <p class="faq-answer">{{ faq_item.answer }}</p>
         </details>
       {% endfor %}
