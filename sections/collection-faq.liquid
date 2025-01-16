@@ -1,22 +1,3 @@
-{% if section.settings.faq_metaobject != blank %}
-  {% assign faq_items = section.settings.faq_metaobject.entries %}
-  <div class="faq-section">
-    <h2>{{ section.settings.faq_title | escape }}</h2>
-    {% for faq in faq_items %}
-      <div class="faq-item">
-        <button class="faq-question" type="button" aria-expanded="false" onclick="toggleFaq(this)">
-          {{ faq.fields.question.value | escape }}
-        </button>
-        <div class="faq-answer" style="display: none;" aria-hidden="true">
-          {{ faq.fields.answer.value | escape }}
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-{% else %}
-  <p>No FAQs available for this collection.</p>
-{% endif %}
-
 {% schema %}
 {
   "name": "Collection FAQ",
@@ -31,11 +12,9 @@
       "default": "Frequently Asked Questions"
     },
     {
-      "type": "metaobject_list",
-      "id": "faq_metaobject",
-      "label": "Select FAQ Metaobject",
-      "metaobject_type": "faq",
-      "limit": 12
+      "type": "richtext",
+      "id": "faq",
+      "label": "Select Faq"
     }
   ],
   "presets": [
