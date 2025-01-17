@@ -2,8 +2,8 @@
   <h2>{{ section.settings.faq_title }}</h2>
   {% assign faq = section.settings.faq_q1 %}
   {% for collection in faq %}
-    <p>{{ collection.question.value }}</p>
-    <p>{{ collection.answer.value }}</p>
+    <div>{{ collection.question.value }}</div>
+    <div>{{ collection.answer.value }}</div>
   {% endfor %}
 {% endif %}
 {% schema %}
