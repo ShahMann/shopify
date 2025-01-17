@@ -8,7 +8,7 @@
           <strong>{{ collection.question.value }}</strong>
         </div>
       </summary>
-      <div>{{ collection.answer }}</div>
+      <div>{{ collection.answer.value | metafield_tag }}</div>
     </details>
   {% endfor %}
 {% endif %}
