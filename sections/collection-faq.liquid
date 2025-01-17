@@ -54,7 +54,6 @@
       const icon = question.querySelector(".toggle-icon");
 
       question.addEventListener("click", () => {
-        // Toggle active class for accordion functionality
         const isOpen = answer.style.display === "block";
         answer.style.display = isOpen ? "none" : "block";
         icon.textContent = isOpen ? "+" : "-";
