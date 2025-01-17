@@ -4,7 +4,9 @@
   {% for collection in faq %}
     <details>
       <summary>
-        <div>{{ collection.question_1.value }}</div>
+        <div>
+          <strong>{{ collection.question_1.value }}</strong>
+        </div>
       </summary>
       <div>{{ collection.answer_1.value }}</div>
     </details>
