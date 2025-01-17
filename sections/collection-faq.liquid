@@ -10,7 +10,7 @@
       </summary>
       <!-- <div>{{ collection.answer.value }}</div> -->
     </details>
-    <div>{{ collection.answer.value.children[0].children[0].value }}</div>
+    <div>{{ collection.answer | metafield_tag }}</div>
   {% endfor %}
 {% endif %}
 
