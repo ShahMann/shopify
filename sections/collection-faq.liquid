@@ -1,17 +1,84 @@
+{% comment %}
+  {% assign faq = section.settings.faq_q1 %}
+  {% if faq != blank %}
+    <h2>{{ section.settings.faq_title }}</h2>
+    {% for collection in faq %}
+      <details>
+        <summary>
+          <div>
+            <strong>{{ collection.question.value }}</strong>
+          </div>
+        </summary>
+        <div>{{ collection.answer | metafield_tag }}</div>
+      </details>
+    {% endfor %}
+  {% endif %}
+{% endcomment %}
+
 {% assign faq = section.settings.faq_q1 %}
 {% if faq != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
-  {% for collection in faq %}
-    <details>
-      <summary>
-        <div>
+  <div class="faq-accordion">
+    {% for collection in faq %}
+      <div class="faq-item">
+        <div class="faq-question">
           <strong>{{ collection.question.value }}</strong>
+          <span class="toggle-icon">+</span>
         </div>
-      </summary>
-      <div>{{ collection.answer | metafield_tag }}</div>
-    </details>
-  {% endfor %}
+        <div class="faq-answer">
+          {{ collection.answer | metafield_tag }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 {% endif %}
+
+<style>
+  .faq-accordion {
+    font-family: Arial, sans-serif;
+  }
+  .faq-item {
+    margin-bottom: 10px;
+  }
+  .faq-question {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  .faq-answer {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #fff;
+  }
+  .faq-question.active .toggle-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+      const question = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer");
+      const icon = question.querySelector(".toggle-icon");
+
+      question.addEventListener("click", () => {
+        // Toggle active class for accordion functionality
+        const isOpen = answer.style.display === "block";
+        answer.style.display = isOpen ? "none" : "block";
+        icon.textContent = isOpen ? "+" : "-";
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
