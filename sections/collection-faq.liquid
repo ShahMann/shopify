@@ -1,14 +1,19 @@
 {% assign faq = section.settings.faq_q1 %}
+
 {% if faq != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
-  {% for collection in faq %}
-    <details>
-      <summary>
-        <div>{{ collection.question.value }}</div>
-      </summary>
-      <div>{{ collection.answer.value }}</div>
-    </details>
-  {% endfor %}
+  <div class="accordion">
+    {% for collection in faq %}
+      <details>
+        <summary class="accordion-button">
+          {{ collection.question.value }}
+        </summary>
+        <div class="accordion-content">
+          {{ collection.answer.value }}
+        </div>
+      </details>
+    {% endfor %}
+  </div>
 {% endif %}
 
 {% schema %}
