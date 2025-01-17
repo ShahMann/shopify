@@ -1,77 +1,11 @@
-{% comment %}
-  {% if section.settings.faq_question != blank and section.settings.faq_answer != blank %}
-    <h2>{{ section.settings.faq_title }}</h2>
-    {% assign faq = section.settings.faq_q1 %}
-    {% for collection in faq %}
-      <div>{{ collection.question.value }}</div>
-      <div>{{ collection.answer.value }}</div>
-    {% endfor %}
-  {% endif %}
-{% endcomment %}
-
 {% assign faq = section.settings.faq_q1 %}
 {% if faq != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
-  <div class="faq-accordion">
-    {% for collection in faq %}
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          {{ collection.question.value }}
-        </button>
-        <div class="faq-answer" hidden>
-          {{ collection.answer.value }}
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+  {% for collection in faq %}
+    <div>{{ collection.question.value }}</div>
+    <div>{{ collection.answer.value }}</div>
+  {% endfor %}
 {% endif %}
-
-<style>
-  .faq-accordion {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  .faq-item {
-    border-bottom: 1px solid #ddd;
-  }
-  .faq-question {
-    background: #f7f7f7;
-    border: none;
-    width: 100%;
-    padding: 15px;
-    text-align: left;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  .faq-question[aria-expanded="true"] {
-    font-weight: bold;
-  }
-  .faq-answer {
-    padding: 15px;
-    display: none;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-
-    faqQuestions.forEach(button => {
-      button.addEventListener('click', () => {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', !expanded);
-
-        const answer = button.nextElementSibling;
-        if (expanded) {
-          answer.hidden = true;
-        } else {
-          answer.hidden = false;
-        }
-      });
-    });
-  });
-</script>
 
 {% schema %}
 {
