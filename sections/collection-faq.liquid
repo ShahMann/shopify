@@ -1,19 +1,14 @@
 {% assign faq = section.settings.faq_q1 %}
-
 {% if faq != blank %}
   <h2>{{ section.settings.faq_title }}</h2>
-  <div class="accordion">
-    {% for collection in faq %}
-      <details>
-        <summary class="accordion-button">
-          {{ collection.question.value }}
-        </summary>
-        <div class="accordion-content">
-          {{ collection.answer.value }}
-        </div>
-      </details>
-    {% endfor %}
-  </div>
+  {% for collection in faq %}
+    <details>
+      <summary>
+        <div>{{ collection.question.value }}</div>
+      </summary>
+      <div>{{ collection.answer.value }}</div>
+    </details>
+  {% endfor %}
 {% endif %}
 
 {% schema %}
@@ -44,34 +39,3 @@
   ]
 }
 {% endschema %}
-
-<style>
-    /* Accordion style */
-  .accordion {
-    margin-top: 20px; /* Adjust as needed */
-  }
-
-  .accordion details {
-    margin-bottom: 10px; /* Adjust spacing between accordion items */
-  }
-
-  .accordion summary {
-    cursor: pointer;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-
-  .accordion summary:focus {
-    outline: none;
-  }
-
-  .accordion-content {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-top: none;
-    border-radius: 0 0 4px 4px;
-  }
-</style>
